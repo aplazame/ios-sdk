@@ -17,7 +17,7 @@ extension UINavigationItem {
 extension UINavigationController {
     func applyStyle() {
         navigationBar.barTintColor = .aBlueColor()
-        navigationBar.translucent = false
+        navigationBar.translucent = false        
     }
 }
 

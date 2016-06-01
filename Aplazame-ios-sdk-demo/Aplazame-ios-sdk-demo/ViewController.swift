@@ -11,6 +11,11 @@ import AplazameSDK
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var checkoutButton: UIButton! {
+        didSet {
+            checkoutButton.moveIconToRight()
+        }
+    }
     @IBOutlet weak var accessTokenTextField: UITextField!
     @IBAction func openCheckout(sender: AnyObject) {
         presentViewController(createAplazameCheckoutVC(), animated: true, completion: nil)
@@ -19,11 +24,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.applyLogo()
-        navigationController?.applyStyle()
+        navigationController?.applyStyle()        
     }
     
     private lazy var order: Order = {
-        var order = Order.create(.randomID, currency: .currentLocale(), taxRate: 20, totalAmount: 2000)
+        var order = Order.create(.randomID, currency: .currentLocale(), taxRate: 20, totalAmount: 2000, discount: -362)
         order.addRandomArticles()
         return order
     }()
@@ -38,7 +43,7 @@ class ViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destination = segue.destinationViewController as? OrderTableViewController {
-            destination.order = order
+            destination.checkout = checkout
         }
     }
 

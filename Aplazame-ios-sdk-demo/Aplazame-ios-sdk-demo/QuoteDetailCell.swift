@@ -16,7 +16,8 @@ class QuoteDetailCell: UITableViewCell {
 }
 
 extension QuoteDetailCell {
-    func configure(title: String, priceInCents: Int, locale: NSLocale) {
-        
+    func configure(titleText: String, priceInCents: Int, locale: NSLocale) {
+        title.text = titleText
+        price.text = .formattedPrice(priceInCents, locale: locale)
     }
 }

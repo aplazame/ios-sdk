@@ -10,7 +10,13 @@ import UIKit
 import AplazameSDK
 
 class OrderTableViewController: UITableViewController {
-    var order: Order!
+    var checkout: Checkout! {
+        didSet {
+            cellsData = checkout.createCellsData()
+        }
+    }
+    
+    private var cellsData: [CellDataType]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,52 +26,68 @@ class OrderTableViewController: UITableViewController {
 }
 
 extension OrderTableViewController {
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return cellsData.count
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return order.calculateVisibleRows
+        return cellsData[section].numOfItems
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let locale = checkout.order.currency
         
-        switch indexPath.row {
-        case 0..<order.articles.count:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ArticleCell")! as! ArticleCell
-            cell.configure(order.articles[indexPath.row], locale: order.currency)
+        switch cellsData[indexPath.section] {
+        case .ArticleType(let articles):
+            let cell = tableView.dequeueReusableCellWithIdentifier("ArticleCell") as! ArticleCell
+            cell.configure(articles[indexPath.row], locale: locale)
             return cell
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("TotalCell")! as! TotalCell
-            cell.configure(order.totalAmount, locale: order.currency)
+        case .ShippingType(let shippingInfo):
+            let cell = tableView.dequeueReusableCellWithIdentifier("QuoteDetailCell") as! QuoteDetailCell
+            cell.configure("Shipping", priceInCents: shippingInfo.price, locale: locale)
+            return cell
+        case .DiscountType(let discount):
+            let cell = tableView.dequeueReusableCellWithIdentifier("QuoteDetailCell") as! QuoteDetailCell
+            cell.configure("Discount", priceInCents: discount, locale: locale)
+            return cell
+        case .TotalType(let total):
+            let cell = tableView.dequeueReusableCellWithIdentifier("TotalCell") as! TotalCell
+            cell.configure(total, locale: locale)
             return cell
         }
-//        if indexPath.row == 1 {
-//            return tableView.dequeueReusableCellWithIdentifier("QuoteDetailCell")! as! QuoteDetailCell
-//        }
-//        
-//        if indexPath.row == 2 {
-//            return tableView.dequeueReusableCellWithIdentifier("TotalCell")! as! TotalCell
-//        }
-        
-        
     }
-    
-    
-    
 }
 
-//enum CellDataType {
-//    case ArticleType(Article)
-//    case SendType(ShippingInfo)
-//    case DiscountType(Decimal)
-//}
-
-private extension Order {
-    var calculateVisibleRows: Int {
-        return articles.count + 1
-    }
+enum CellDataType {
+    case ArticleType([Article])
+    case ShippingType(ShippingInfo)
+    case DiscountType(Decimal)
+    case TotalType(Decimal)
     
-//    func createCellsData() -> [CellDataType] {
-//        let articlesData = articles.map { CellDataType.ArticleType($0) }
-//        let sendData =
-//        
-//        return articlesData + [.SendType(shippin)] +
-//    }
+    var numOfItems: Int {
+        switch self {
+        case .ArticleType(let articles): return articles.count
+        default: return 1
+        }
+    }
+}
+
+private extension Checkout {
+    func createCellsData() -> [CellDataType] {
+        var cellsData = [CellDataType]()
+        
+        cellsData.append(.ArticleType(order.articles))
+        if let discount = order.discount {
+            cellsData.append(.DiscountType(discount))
+        }
+        
+        if let shippingInfo = shippingInfo {
+            cellsData.append(.ShippingType(shippingInfo))
+        }
+        
+        cellsData.append(.TotalType(order.totalAmount))
+        
+        return cellsData
+    }
 }
