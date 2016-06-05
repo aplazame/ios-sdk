@@ -112,6 +112,10 @@ SWIFT_CLASS("_TtC11AplazameSDK30AplazameCheckoutViewController")
 @end
 
 
+@interface AplazameCheckoutViewController (SWIFT_EXTENSION(AplazameSDK))
+@end
+
+
 @interface NSDate (SWIFT_EXTENSION(AplazameSDK))
 @end
 
@@ -124,7 +128,7 @@ SWIFT_CLASS("_TtC11AplazameSDK30AplazameCheckoutViewController")
 @end
 
 
-@interface WKWebView (SWIFT_EXTENSION(AplazameSDK))
+@interface WKScriptMessage (SWIFT_EXTENSION(AplazameSDK))
 @end
 
 #pragma clang diagnostic pop
