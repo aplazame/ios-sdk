@@ -24,7 +24,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.applyLogo()
-        navigationController?.applyStyle()        
+        navigationController?.applyStyle()
+        
+        AplazameSDK.debugMode = true
     }
     
     private lazy var order: Order = {
@@ -33,13 +35,14 @@ class ViewController: UIViewController {
         return order
     }()
     
-    private lazy var checkout: Checkout = {
-        var checkout = Checkout.create(self.order)
+    private var checkout: Checkout {
+        let config = Config(accessToken: accessTokenTextField.text ?? "", environment: .Sandbox)
+        var checkout = Checkout.create(self.order, config: config)
         checkout.addRandomShippingInfo()
         checkout.addRandomCustomer()
         checkout.addRandomBillingInfo()
         return checkout
-    }()
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destination = segue.destinationViewController as? OrderTableViewController {
@@ -48,10 +51,7 @@ class ViewController: UIViewController {
     }
 
     private func createAplazameCheckoutVC() -> AplazameCheckoutViewController {
-        let config = Config(accessToken: accessTokenTextField.text ?? "", environment: .Sandbox)
-        let checkoutData = CheckoutControllerData(checkout: checkout, config: config)
-        
-        return AplazameCheckoutViewController.create(checkoutData, delegate: self)
+        return AplazameCheckoutViewController.create(checkout, delegate: self)
     }
 }
 
@@ -78,7 +78,7 @@ extension Order {
     mutating func addRandomArticles() {
         addArticle(.create("id1", name: "RELOJ EN ORO BLANCO DE 18 QUILATES Y DIAMANTES", description: "description", url: NSURL(string: "http://www.chanel.com/es_ES/Relojeria/relojes_joyer%C3%ADa#reloj-en-oro-blanco-de-18-quilates-y-diamantes-J10211")!, imageUrl: NSURL(string: "https://i.imgur.com/1nIay4X.jpg")!, quantity: 2, price: 3993))
         addArticle(.create("id2", name: "N°5 EAU PREMIERE SPRAY", description: "description", url: NSURL(string: "http://www.chanel.com/en_US/fragrance-beauty/Fragrance-N%C2%B05-N%C2%B05-88145/sku/138083")!, imageUrl: NSURL(string: "https://i.imgur.com/CZ5UPbl.jpg")!, price: 3509))
-        addArticle(.create("id2", name: "ILLUSION D'OMBRE", description: "description", url: NSURL(string: "http://www.chanel.com/en_US/fragrance-beauty/Makeup-Eyeshadow-ILLUSION-D%27OMBRE-122567")!, imageUrl: NSURL(string: "https://i.imgur.com/4j2ib6w.jpg")!, price: 1573))
+        addArticle(.create("id2", name: "ILLUSION DOMBRE", description: "description", url: NSURL(string: "http://www.chanel.com/en_US/fragrance-beauty/Makeup-Eyeshadow-ILLUSION-D%27OMBRE-122567")!, imageUrl: NSURL(string: "https://i.imgur.com/4j2ib6w.jpg")!, price: 1573))
     }
 }
 
