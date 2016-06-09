@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/AplazameSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		KC1p7GHsWwxKbbcpo7pGiQuJXNk=
+		FDRpsd4MBl6MQFnKrGxDIchiPf4=
 		</data>
 		<key>Modules/AplazameSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/AplazameSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		/OZ/SQ0V9g17gz+goimtRs5jj/M=
+		oPhgh2OkZNzapLoURwmyf3qZ53w=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -76,11 +76,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			KC1p7GHsWwxKbbcpo7pGiQuJXNk=
+			FDRpsd4MBl6MQFnKrGxDIchiPf4=
 			</data>
 			<key>hash2</key>
 			<data>
-			qkXdNg+spoxZqkR40TQ53/ZyxgtltqLutoyiYI7b30U=
+			Qzu6Y2onwJJUqlYFrD4kYXSOx6OsQdXjyLiO93y26+o=
 			</data>
 		</dict>
 		<key>Modules/AplazameSDK.swiftmodule/arm64.swiftdoc</key>
@@ -98,11 +98,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/OZ/SQ0V9g17gz+goimtRs5jj/M=
+			oPhgh2OkZNzapLoURwmyf3qZ53w=
 			</data>
 			<key>hash2</key>
 			<data>
-			EIWLQ63wK6YNRFGW72QszWTc4sBDMLmi8htaFz0AOP0=
+			LnaQj4fC+2ZHQyPkDFnDTsXKAeaotUrohIpb3UJwH5A=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
