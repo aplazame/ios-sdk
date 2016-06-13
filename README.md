@@ -108,5 +108,5 @@ redistributed under the terms specified in the [LICENSE] file.
 About
 -----
 
-<Aplazame logo>
-<Aplazame info>
+https://aplazame.com/
+
