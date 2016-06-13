@@ -41,7 +41,7 @@ Then run `pod install` with CocoaPods 1.0 or newer.
 
 ```swift
 let aplazameVC = AplazameCheckoutViewController.create(checkout, delegate: self)
-presentViewController(createAplazameCheckoutVC(), animated: true, completion: nil)
+presentViewController(aplazameVC, animated: true, completion: nil)
 ```
 
 The minimun information checkout object has to contain in order to work is: 
@@ -52,7 +52,7 @@ The minimun information checkout object has to contain in order to work is:
 
 ```swift
 let config = Config(accessToken: "your access token", environment: .Sandbox)
-let checkout = Checkout.create(self.order, config: config)
+let checkout = Checkout.create(order, config: config)
 ```
 
 To create this `order` object use the following code:
@@ -75,7 +75,7 @@ Order also contains other field as:
 - `discountRate`
 - `cartDiscount`
 
-Check the example to see an example of their use.
+Check the [demo project](https://github.com/aplazame/ios-sdk/tree/andresbrun-readme/Aplazame-ios-sdk-demo) to see an example of their use.
 
 Next, you will need an object that conform to `AplazameCheckoutDelegate` protocol. this object will receive following calls:
 
@@ -91,7 +91,7 @@ extension ViewController: AplazameCheckoutDelegate {
     
     func checkoutHandleCheckoutToken(token: String, handler: (success: Bool) -> Void) {
         print("checkoutHandleCheckoutToken \(token)")
-        // Here is where token has to be verify with you own service
+        // Here is where token has to be verified with you own service
         handler(success: true)
     }
 }
