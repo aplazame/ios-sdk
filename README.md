@@ -32,14 +32,70 @@ Add the following to your [Podfile](http://guides.cocoapods.org/using/the-podfil
 pod 'Aplazame'
 ```
 
-You will also need to make sure you're opting into using frameworks:
+Then run `pod install` with CocoaPods 1.0 or newer.
 
-```ruby
-use_frameworks!
+### How to use ###
+`AplazameCheckoutViewController` needs two object in order to work:
+- `checkout`: it is the object where all information regarding with checkout is.
+- `delegate`: class that will receive payment flow callbacks.
+
+```swift
+let aplazameVC = AplazameCheckoutViewController.create(checkout, delegate: self)
+presentViewController(createAplazameCheckoutVC(), animated: true, completion: nil)
 ```
 
-Then run `pod install` with CocoaPods 0.36 or newer.
+The minimun information checkout object has to contain in order to work is: 
+- `config`: object that stores access token and environment (.Sanbox or .Production)
+- `order`: the object that store all information related with the order. It has to contain, at least:
+  - `shippingInfo`
+  - `costumer`
 
+```swift
+let config = Config(accessToken: "your access token", environment: .Sandbox)
+let checkout = Checkout.create(self.order, config: config)
+```
+
+To create this `order` object use the following code:
+```swift
+let order = Order.create("orderID", locale: .currentLocale(), taxRate: 20, totalAmount: 2000, discount: -362)
+```
+*NOTE:* orderID has to be different if any field changes.
+`locale` is used to get the currency in this case.
+
+To add `shippingInfo` and `costumer` to the order:
+```swift
+let address = Address.create("Fernando", lastName: "Cabello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", countryLocale: .currentLocale(), postcode: "28020")
+checkout.shippingInfo = .create("Fernando", price: 500, address: address)
+
+checkout.customer = .create("140", email: "dev@aplazame.com", gender: .Male, type: .Existing)
+```
+Order also contains other field as:
+- `articles`
+- `discount`
+- `discountRate`
+- `cartDiscount`
+
+Check the example to see an example of their use.
+
+Next, you will need an object that conform to `AplazameCheckoutDelegate` protocol. this object will receive following calls:
+
+```swift
+extension ViewController: AplazameCheckoutDelegate {
+    func checkoutDidCancel() {
+         print("checkoutDidCancel")
+    }
+    
+    func checkoutDidSuccess() {
+         print("checkoutDidSuccess")
+    }
+    
+    func checkoutHandleCheckoutToken(token: String, handler: (success: Bool) -> Void) {
+        print("checkoutHandleCheckoutToken \(token)")
+        // Here is where token has to be verify with you own service
+        handler(success: true)
+    }
+}
+```
 
 License
 -------
