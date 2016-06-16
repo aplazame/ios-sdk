@@ -36,7 +36,7 @@ extension OrderTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let locale = checkout.order.currency
+        let locale = checkout.order.locale
         
         switch cellsData[indexPath.section] {
         case .ArticleType(let articles):

@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }
     
     private lazy var order: Order = {
-        var order = Order.create(.randomID, currency: .currentLocale(), taxRate: 20, totalAmount: 2000, discount: -362)
+        var order = Order.create(.randomID, locale: .currentLocale(), taxRate: 20, totalAmount: 2000, discount: -362)
         order.addRandomArticles()
         return order
     }()
@@ -84,7 +84,7 @@ extension Order {
 
 extension Checkout {
     mutating func addRandomShippingInfo() {
-        let address = Address.create("Fernando", lastName: "Cabello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", country: .currentLocale(), postcode: "28020")
+        let address = Address.create("Fernando", lastName: "Cabello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", locale: .currentLocale(), postcode: "28020")
         shippingInfo = .create("Fernando", price: 500, address: address)
     }
     
@@ -93,6 +93,6 @@ extension Checkout {
     }
     
     mutating func addRandomBillingInfo() {
-        billingInfo = BillingInfo.create("Frank", lastName: "Costello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", country: .currentLocale(), postcode: "28020")
+        billingInfo = BillingInfo.create("Frank", lastName: "Costello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", locale: .currentLocale(), postcode: "28020")
     }
 }
