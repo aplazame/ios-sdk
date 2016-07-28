@@ -11,6 +11,8 @@
 		8B67C89F1CFF418900A56D80 /* AplazameSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B67C89C1CFF413D00A56D80 /* AplazameSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B67C8A31CFF4D2800A56D80 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B67C8A21CFF4D2800A56D80 /* UIButtonExtension.swift */; };
 		8BCE20DC1CFAE4FB00E85024 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE20DB1CFAE4FB00E85024 /* StringExtension.swift */; };
+		DD1F45E51D32416400AA584A /* OrderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1F45E41D32416400AA584A /* OrderExtension.swift */; };
+		DD1F45E71D32417E00AA584A /* CheckoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1F45E61D32417E00AA584A /* CheckoutExtension.swift */; };
 		DD886EE61CDE090600B076C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD886EE51CDE090600B076C6 /* AppDelegate.swift */; };
 		DD886EE81CDE090600B076C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD886EE71CDE090600B076C6 /* ViewController.swift */; };
 		DD886EEB1CDE090600B076C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD886EE91CDE090600B076C6 /* Main.storyboard */; };
@@ -62,6 +64,8 @@
 		8B67C89C1CFF413D00A56D80 /* AplazameSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AplazameSDK.framework; sourceTree = "<group>"; };
 		8B67C8A21CFF4D2800A56D80 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		8BCE20DB1CFAE4FB00E85024 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		DD1F45E41D32416400AA584A /* OrderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderExtension.swift; sourceTree = "<group>"; };
+		DD1F45E61D32417E00AA584A /* CheckoutExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutExtension.swift; sourceTree = "<group>"; };
 		DD886EE21CDE090600B076C6 /* Aplazame-ios-sdk-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aplazame-ios-sdk-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD886EE51CDE090600B076C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD886EE71CDE090600B076C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				DDDDC26C1CECE08D00EE8814 /* OrderTableViewController.swift */,
 				DD886EE71CDE090600B076C6 /* ViewController.swift */,
 				8BCE20DB1CFAE4FB00E85024 /* StringExtension.swift */,
+				DD1F45E41D32416400AA584A /* OrderExtension.swift */,
+				DD1F45E61D32417E00AA584A /* CheckoutExtension.swift */,
 				DD886EE91CDE090600B076C6 /* Main.storyboard */,
 				DDDDC26E1CECE35B00EE8814 /* ArticleCell.swift */,
 				DDDDC2701CECE39000EE8814 /* QuoteDetailCell.swift */,
@@ -307,9 +313,11 @@
 				8B67C8A31CFF4D2800A56D80 /* UIButtonExtension.swift in Sources */,
 				DDDDC26F1CECE35B00EE8814 /* ArticleCell.swift in Sources */,
 				8BCE20DC1CFAE4FB00E85024 /* StringExtension.swift in Sources */,
+				DD1F45E51D32416400AA584A /* OrderExtension.swift in Sources */,
 				DDDDC27C1CECF36D00EE8814 /* PriceExtension.swift in Sources */,
 				DD886EE81CDE090600B076C6 /* ViewController.swift in Sources */,
 				DDDDC2801CECF55700EE8814 /* AppearanceExtension.swift in Sources */,
+				DD1F45E71D32417E00AA584A /* CheckoutExtension.swift in Sources */,
 				DDDDC26D1CECE08D00EE8814 /* OrderTableViewController.swift in Sources */,
 				DDDDC2731CECE3C400EE8814 /* TotalCell.swift in Sources */,
 				DDDDC27E1CECF38200EE8814 /* ImageViewExtension.swift in Sources */,
