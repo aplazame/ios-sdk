@@ -17,8 +17,8 @@ class ViewController: UIViewController {
         }
     }
     @IBOutlet weak var accessTokenTextField: UITextField!
-    @IBAction func openCheckout(sender: AnyObject) {
-        if let text = accessTokenTextField.text where !text.isEmpty {
+    @IBAction func openCheckout(_ sender: AnyObject) {
+        if let text = accessTokenTextField.text , !text.isEmpty {
             AplazameSDK.presentFromVC(navigationController!, checkout: createCheckout(text), delegate: self)
         }
     }
@@ -31,14 +31,14 @@ class ViewController: UIViewController {
         AplazameSDK.debugMode = true
     }
     
-    private lazy var order: Order = {
-        var order = Order.create(.randomID, locale: .currentLocale(), taxRate: 20, totalAmount: 2000, discount: -362)
+    fileprivate lazy var order: Order = {
+        var order = Order.create(.randomID, locale: .current, taxRate: 20, totalAmount: 2000, discount: -362)
         order.addRandomArticles()
         return order
     }()
     
-    private func createCheckout(token: String) -> Checkout {
-        let config = Config(accessToken: token, environment: .Sandbox)
+    fileprivate func createCheckout(_ token: String) -> Checkout {
+        let config = Config(accessToken: token, environment: .sandbox)
         var checkout = Checkout.create(self.order, config: config)
         checkout.addRandomShippingInfo()
         checkout.addRandomCustomer()
@@ -46,8 +46,8 @@ class ViewController: UIViewController {
         return checkout
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let destination = segue.destinationViewController as? OrderTableViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? OrderTableViewController {
             destination.checkout = createCheckout("")
         }
     }
@@ -62,12 +62,12 @@ extension ViewController: AplazameCheckoutDelegate {
          print("checkoutDidSuccess")
     }
     
-    func checkoutHandleCheckoutToken(token: String, handler: (success: Bool) -> Void) {
+    func checkoutHandleCheckoutToken(_ token: String, handler: (_ success: Bool) -> Void) {
         print("checkoutHandleCheckoutToken \(token)")
-        handler(success: true)
+        handler(true)
     }
     
-    func checkoutDidFinishWithError(error: NSError) {
+    func checkoutDidFinishWithError(_ error: NSError) {
          print("checkoutDidFinishWithError \(error.description)")
     }
 }

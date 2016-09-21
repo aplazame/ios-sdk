@@ -10,7 +10,7 @@ import AplazameSDK
 
 extension Checkout {
     mutating func addRandomShippingInfo() {
-        let address = Address.create("Fernando", lastName: "Cabello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", locale: .currentLocale(), postcode: "28020")
+        let address = Address.create("Fernando", lastName: "Cabello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", locale: .current, postcode: "28020")
         shippingInfo = .create("Fernando", price: 500, address: address)
     }
     
@@ -19,6 +19,6 @@ extension Checkout {
     }
     
     mutating func addRandomBillingInfo() {
-        billingInfo = BillingInfo.create("Frank", lastName: "Costello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", locale: .currentLocale(), postcode: "28020")
+        billingInfo = BillingInfo.create("Frank", lastName: "Costello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", locale: .current, postcode: "28020")
     }
 }

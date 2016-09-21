@@ -15,7 +15,7 @@ class TotalCell: UITableViewCell {
 }
 
 extension TotalCell {
-    func configure(priceInCents: Int, locale: NSLocale) {
+    func configure(_ priceInCents: Int, locale: Locale) {
         amountLabel.text = .formattedPrice(priceInCents, locale: locale)
     }
 }

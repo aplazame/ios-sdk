@@ -9,10 +9,11 @@
 import UIKit
 
 extension String {
-    static func formattedPrice(priceInCents: Int, locale: NSLocale) -> String {
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
+    static func formattedPrice(_ priceInCents: Int, locale: Locale) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
         formatter.locale = locale
-        return formatter.stringFromNumber(CGFloat(priceInCents) * 0.01)!
+        let amount = Double(priceInCents) * Double(0.01)
+        return formatter.string(from: NSNumber(value: amount))!
     }
 }

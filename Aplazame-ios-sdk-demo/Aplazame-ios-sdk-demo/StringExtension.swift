@@ -16,10 +16,10 @@ extension String {
         
         let randomCharacters = (0..<4).map { i -> String in
             let offset = Int(arc4random_uniform(lettersLength))
-            let c = letters[letters.startIndex.advancedBy(offset)]
+            let c = letters[letters.index(letters.startIndex, offsetBy: offset)]
             return String(c)
         }
         
-        return randomCharacters.joinWithSeparator("")
+        return randomCharacters.joined(separator: "")
     }
 }
