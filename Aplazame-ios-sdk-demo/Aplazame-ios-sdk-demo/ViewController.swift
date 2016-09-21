@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var accessTokenTextField: UITextField!
     @IBAction func openCheckout(sender: AnyObject) {
         if let text = accessTokenTextField.text where !text.isEmpty {
-            presentViewController(createAplazameCheckoutVC(text), animated: true, completion: nil)
+            AplazameSDK.presentFromVC(navigationController!, checkout: createCheckout(text), delegate: self)
         }
     }
     
@@ -50,12 +50,6 @@ class ViewController: UIViewController {
         if let destination = segue.destinationViewController as? OrderTableViewController {
             destination.checkout = createCheckout("")
         }
-    }
-
-    private func createAplazameCheckoutVC(token: String) -> AplazameCheckoutViewController {
-        let checkoutVC = AplazameCheckoutViewController.create(createCheckout(token), delegate: self)
-        checkoutVC.modalTransitionStyle = .CrossDissolve
-        return checkoutVC
     }
 }
 

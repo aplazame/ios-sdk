@@ -92,29 +92,13 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 # endif
 #endif
 #if defined(__has_feature) && __has_feature(modules)
-@import UIKit;
 @import Foundation;
+@import UIKit;
 @import WebKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-@class NSCoder;
-
-SWIFT_CLASS("_TtC11AplazameSDK30AplazameCheckoutViewController")
-@interface AplazameCheckoutViewController : UIViewController
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)viewDidLoad;
-@end
-
-
-@interface AplazameCheckoutViewController (SWIFT_EXTENSION(AplazameSDK))
-@end
-
-
-@interface AplazameCheckoutViewController (SWIFT_EXTENSION(AplazameSDK))
-@end
-
 
 @interface NSDate (SWIFT_EXTENSION(AplazameSDK))
 @end
