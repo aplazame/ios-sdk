@@ -9,7 +9,7 @@
 import UIKit
 
 extension String {
-    static func formattedPrice(_ priceInCents: Int, locale: Locale) -> String {
+    static func formatted(price priceInCents: Int, locale: Locale) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = locale

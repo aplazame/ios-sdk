@@ -41,19 +41,19 @@ extension OrderTableViewController {
         switch cellsData[(indexPath as NSIndexPath).section] {
         case .articleType(let articles):
             let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell") as! ArticleCell
-            cell.configure(articles[(indexPath as NSIndexPath).row], locale: locale)
+            cell.configure(with: articles[(indexPath as NSIndexPath).row], locale: locale)
             return cell
         case .shippingType(let shippingInfo):
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuoteDetailCell") as! QuoteDetailCell
-            cell.configure("Shipping", priceInCents: shippingInfo.price, locale: locale)
+            cell.configure(with: "Shipping", priceInCents: shippingInfo.price, locale: locale)
             return cell
         case .discountType(let discount):
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuoteDetailCell") as! QuoteDetailCell
-            cell.configure("Discount", priceInCents: discount, locale: locale)
+            cell.configure(with: "Discount", priceInCents: discount, locale: locale)
             return cell
         case .totalType(let total):
             let cell = tableView.dequeueReusableCell(withIdentifier: "TotalCell") as! TotalCell
-            cell.configure(total, locale: locale)
+            cell.configure(with: total, locale: locale)
             return cell
         }
     }

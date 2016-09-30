@@ -9,7 +9,7 @@
 import UIKit
 import AplazameSDK
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     @IBOutlet weak var checkoutButton: UIButton! {
         didSet {
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var accessTokenTextField: UITextField!
     @IBAction func openCheckout(_ sender: AnyObject) {
         if let text = accessTokenTextField.text , !text.isEmpty {
-            AplazameSDK.presentFromVC(navigationController!, checkout: createCheckout(text), delegate: self)
+            AplazameSDK.present(from: navigationController!, checkout: createCheckout(with: text), delegate: self)
         }
     }
     
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         return order
     }()
     
-    fileprivate func createCheckout(_ token: String) -> Checkout {
+    fileprivate func createCheckout(with token: String) -> Checkout {
         let config = Config(accessToken: token, environment: .sandbox)
         var checkout = Checkout.create(self.order, config: config)
         checkout.addRandomShippingInfo()
@@ -47,9 +47,8 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? OrderTableViewController {
-            destination.checkout = createCheckout("")
-        }
+        guard let destination = segue.destination as? OrderTableViewController else { return }
+        destination.checkout = createCheckout(with: "")
     }
 }
 
