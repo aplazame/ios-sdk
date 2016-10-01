@@ -124,4 +124,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @interface WKScriptMessage (SWIFT_EXTENSION(AplazameSDK))
 @end
 
+
+@interface WKWebView (SWIFT_EXTENSION(AplazameSDK))
+@end
+
 #pragma clang diagnostic pop

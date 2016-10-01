@@ -53,6 +53,11 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController: AplazameCheckoutDelegate {
+    public func checkoutHandle(checkoutToken token: String, handler: (Bool) -> Void) {
+        print("checkoutHandleCheckoutToken \(token)")
+        handler(true)
+    }
+
     func checkoutDidCancel() {
          print("checkoutDidCancel")
     }
@@ -60,15 +65,8 @@ extension ViewController: AplazameCheckoutDelegate {
     func checkoutDidSuccess() {
          print("checkoutDidSuccess")
     }
-    
-    func checkoutHandleCheckoutToken(_ token: String, handler: (_ success: Bool) -> Void) {
-        print("checkoutHandleCheckoutToken \(token)")
-        handler(true)
-    }
-    
-    func checkoutDidFinishWithError(_ error: NSError) {
-         print("checkoutDidFinishWithError \(error.description)")
+
+    func checkoutFinished(with error: Error) {
+        print("checkoutDidFinishWithError \(error.localizedDescription)")
     }
 }
-
-
