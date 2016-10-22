@@ -39,7 +39,7 @@ final class ViewController: UIViewController {
     
     fileprivate func createCheckout(with token: String) -> Checkout {
         let config = Config(accessToken: token, environment: .sandbox)
-        var checkout = Checkout.create(self.order, config: config)
+        var checkout = Checkout.create(order, config: config)
         checkout.addRandomShippingInfo()
         checkout.addRandomCustomer()
         checkout.addRandomBillingInfo()
