@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-    spec.name                   = "AplazameSDK"
+    spec.name                   = "AplazameSDK-iOS"
     spec.authors                = "Aplazame, Inc."
     spec.version                = "0.0.1"
     spec.summary                = "Integrate Aplazame SDK into your iOS app"
