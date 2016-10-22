@@ -29,7 +29,7 @@ for up to date installation instructions.
 Add the following to your [Podfile](http://guides.cocoapods.org/using/the-podfile.html):
 
 ```ruby
-pod 'Aplazame'
+pod 'AplazameSDK-iOS'
 ```
 
 Then run `pod install` with CocoaPods 1.0 or newer.
@@ -40,8 +40,7 @@ Then run `pod install` with CocoaPods 1.0 or newer.
 - `delegate`: class that will receive payment flow callbacks.
 
 ```swift
-let aplazameVC = AplazameCheckoutViewController.create(checkout, delegate: self)
-presentViewController(aplazameVC, animated: true, completion: nil)
+AplazameSDK.present(from: navigationController!, checkout: checkout, delegate: self)
 ```
 
 The minimun information checkout object has to contain in order to work is: 
@@ -57,14 +56,14 @@ let checkout = Checkout.create(order, config: config)
 
 To create this `order` object use the following code:
 ```swift
-let order = Order.create("orderID", locale: .currentLocale(), taxRate: 20, totalAmount: 2000, discount: -362)
+let order = Order.create("orderID", locale: .current, taxRate: 20, totalAmount: 2000, discount: -362)
 ```
 *NOTE:* orderID has to be different if any field changes.
 `locale` is used to get the currency in this case.
 
 To add `shippingInfo` and `costumer` to the order:
 ```swift
-let address = Address.create("Fernando", lastName: "Cabello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", countryLocale: .currentLocale(), postcode: "28020")
+let address = Address.create("Fernando", lastName: "Cabello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", countryLocale: .current, postcode: "28020")
 checkout.shippingInfo = .create("Fernando", price: 500, address: address)
 
 checkout.customer = .create("140", email: "dev@aplazame.com", gender: .Male, type: .Existing)
@@ -89,6 +88,10 @@ extension ViewController: AplazameCheckoutDelegate {
          print("checkoutDidSuccess")
     }
     
+    func checkoutFinished(with error: Error) {
+        print("checkoutDidFinishWithError \(error.localizedDescription)")
+    }
+
     func checkoutHandleCheckoutToken(token: String, handler: (success: Bool) -> Void) {
         print("checkoutHandleCheckoutToken \(token)")
         // Here is where token has to be verified with you own service
