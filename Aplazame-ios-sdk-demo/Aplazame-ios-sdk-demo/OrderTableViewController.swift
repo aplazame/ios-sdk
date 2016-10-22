@@ -16,7 +16,7 @@ class OrderTableViewController: UITableViewController {
         }
     }
     
-    private var cellsData: [CellDataType]!
+    fileprivate var cellsData: [CellDataType]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,47 +27,47 @@ class OrderTableViewController: UITableViewController {
 
 extension OrderTableViewController {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return cellsData.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellsData[section].numOfItems
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let locale = checkout.order.currency
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let locale = checkout.order.locale
         
-        switch cellsData[indexPath.section] {
-        case .ArticleType(let articles):
-            let cell = tableView.dequeueReusableCellWithIdentifier("ArticleCell") as! ArticleCell
-            cell.configure(articles[indexPath.row], locale: locale)
+        switch cellsData[(indexPath as NSIndexPath).section] {
+        case .articleType(let articles):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell") as! ArticleCell
+            cell.configure(with: articles[(indexPath as NSIndexPath).row], locale: locale)
             return cell
-        case .ShippingType(let shippingInfo):
-            let cell = tableView.dequeueReusableCellWithIdentifier("QuoteDetailCell") as! QuoteDetailCell
-            cell.configure("Shipping", priceInCents: shippingInfo.price, locale: locale)
+        case .shippingType(let shippingInfo):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QuoteDetailCell") as! QuoteDetailCell
+            cell.configure(with: "Shipping", priceInCents: shippingInfo.price, locale: locale)
             return cell
-        case .DiscountType(let discount):
-            let cell = tableView.dequeueReusableCellWithIdentifier("QuoteDetailCell") as! QuoteDetailCell
-            cell.configure("Discount", priceInCents: discount, locale: locale)
+        case .discountType(let discount):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QuoteDetailCell") as! QuoteDetailCell
+            cell.configure(with: "Discount", priceInCents: discount, locale: locale)
             return cell
-        case .TotalType(let total):
-            let cell = tableView.dequeueReusableCellWithIdentifier("TotalCell") as! TotalCell
-            cell.configure(total, locale: locale)
+        case .totalType(let total):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TotalCell") as! TotalCell
+            cell.configure(with: total, locale: locale)
             return cell
         }
     }
 }
 
 enum CellDataType {
-    case ArticleType([Article])
-    case ShippingType(ShippingInfo)
-    case DiscountType(Decimal)
-    case TotalType(Decimal)
+    case articleType([Article])
+    case shippingType(ShippingInfo)
+    case discountType(Int)
+    case totalType(Int)
     
     var numOfItems: Int {
         switch self {
-        case .ArticleType(let articles): return articles.count
+        case .articleType(let articles): return articles.count
         default: return 1
         }
     }
@@ -77,16 +77,16 @@ private extension Checkout {
     func createCellsData() -> [CellDataType] {
         var cellsData = [CellDataType]()
         
-        cellsData.append(.ArticleType(order.articles))
+        cellsData.append(.articleType(order.articles))
         if let discount = order.discount {
-            cellsData.append(.DiscountType(discount))
+            cellsData.append(.discountType(discount))
         }
         
         if let shippingInfo = shippingInfo {
-            cellsData.append(.ShippingType(shippingInfo))
+            cellsData.append(.shippingType(shippingInfo))
         }
         
-        cellsData.append(.TotalType(order.totalAmount))
+        cellsData.append(.totalType(order.totalAmount))
         
         return cellsData
     }

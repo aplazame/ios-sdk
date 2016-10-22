@@ -1,3 +1,0 @@
-framework module AplazameSDK {
-    header "AplazameSDK-Swift.h"
-}

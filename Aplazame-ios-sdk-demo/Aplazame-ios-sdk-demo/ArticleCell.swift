@@ -19,10 +19,10 @@ class ArticleCell: UITableViewCell {
 }
 
 extension ArticleCell {
-    func configure(article: Article, locale: NSLocale) {
-        articleImage.loadImageURL(article.imageUrl)
+    func configure(with article: Article, locale: Locale) {
+        articleImage.load(ImageURL: article.imageUrl)
         articleName.text = article.name
         articleAmount.text = "\(article.quantity) x"
-        articleUnitPrice.text = String.formattedPrice(article.price, locale: locale)
+        articleUnitPrice.text = String.formatted(price: article.price, locale: locale)
     }
 }
