@@ -11,17 +11,32 @@ import WebKit
 
 let checkoutCallbackName = "checkout"
 
+/*
+ "aplazame": "checkout"
+ < event: checkout-ready
+ < event: get-checkout-data
+ > event: checkout-data.    data: <checkout_data>
+ < event: status_change.    status: success | pending | ko
+ < event: close.            result: success | pending | dismiss | ko
+ */
 enum CheckoutPostMessageType: String {
-    case Merchant = "merchant"
-    case Success = "success"
-    case Confirm = "confirm"
-    case Close = "close"
+    case getCheckoutData = "get-checkout-data"
+    case statusChange = "status-change"
+    case checkoutReady = "checkout-ready"
+    case close = "close"
 }
 
-enum CheckoutCloseReason: String {
-    case Dismiss = "dismiss"
-    case Success = "success"
-    case Cancel = "cancel"
+public enum CheckoutCloseReason: String {
+    case success = "success"
+    case pending = "pending"
+    case dismiss = "dismiss"
+    case ko = "ko"
+}
+
+public enum CheckoutStatus: String {
+    case pending = "pending"
+    case success = "success"
+    case ko = "ko"
 }
 
 extension AplazameCheckoutViewController: IFrameCommunicator {
@@ -29,24 +44,11 @@ extension AplazameCheckoutViewController: IFrameCommunicator {
         let allInfoJSON = try! JSONSerialization.data(withJSONObject: checkout.record, options: JSONSerialization.WritingOptions(rawValue: 0))
         let allInfoJSONString = NSString(data: allInfoJSON, encoding: String.Encoding.utf8.rawValue)!.replacingOccurrences(of: "'", with: "\'")
         
-        let exec = "parent.window.postMessage({aplazame: 'checkout', checkout: \(allInfoJSONString)}, '*');"
+        let exec = "window.postMessage({aplazame: 'checkout', event: 'checkout-data', data: \(allInfoJSONString)}, '*');"
         dPrint(exec)
         webView.evaluateJavaScript(exec) { (object, error) in
             dPrint("sendCheckout object \(String(describing: object)) error \(String(describing: error))")
         }
     }
-    
-    func sendTokenConfirmation(with success: Bool) {
-        let exec = "parent.window.postMessage({aplazame: 'checkout', event: 'confirmation', result: '\(success.apiRecordString)'}, '*');"
-        dPrint(exec)
-        webView.evaluateJavaScript(exec) { (object, error) in
-            dPrint("sendTokenConfirmation object \(String(describing: object)) error \(String(describing: error))")
-        }
-    }
 }
 
-private extension Bool {
-    var apiRecordString: String {
-        return self ? "success" : "error"
-    }
-}

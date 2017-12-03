@@ -93,7 +93,6 @@
 		DD3439EC1D04423700D0486A /* CheckoutMessagesHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutMessagesHandler.swift; sourceTree = "<group>"; };
 		DD3439EE1D0443FF00D0486A /* WebViewContainerViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewContainerViewTests.swift; sourceTree = "<group>"; };
 		DD3439F01D04450400D0486A /* UnitTestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTestHelper.swift; sourceTree = "<group>"; };
-		DD5819C01DCF25B900B3D88E /* WebViewLoadingViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewLoadingViewTests.swift; sourceTree = "<group>"; };
 		DD6601811CDBA2ED00C6E600 /* AplazameSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AplazameSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6601841CDBA2ED00C6E600 /* Aplazame-ios-sdk-private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aplazame-ios-sdk-private.h"; sourceTree = "<group>"; };
 		DD6601861CDBA2ED00C6E600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,7 +197,6 @@
 				8B31657D1CE8D0A600815460 /* CheckoutTests.swift */,
 				DD6601921CDBA2ED00C6E600 /* Info.plist */,
 				DD3439EE1D0443FF00D0486A /* WebViewContainerViewTests.swift */,
-				DD5819C01DCF25B900B3D88E /* WebViewLoadingViewTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";

@@ -40,31 +40,32 @@ class CheckoutMessagesHandler: PostMessageHandler {
         }
         
         switch postMessageType {
-        case .Merchant:
-            handleMerchanEvent()
-        case .Success, .Confirm:
-            handleConfirmTokenEvent(body["data"] as? String)
-            close()
-        case .Close:
+        case .getCheckoutData:
+            handleCheckoutEvent()
+        case .checkoutReady:
+            delegate.checkoutReady()
+        case .statusChange:
+            handleStatusChange(body["status"] as? String)
+        case .close:
             handleCloseEvent(with: body["result"] as? String)
             close()
         }
     }
     
-    private func handleMerchanEvent() {
+    private func handleCheckoutEvent() {
         dPrint("Merchant event received")
         iFrameCommunicator.send(checkout: checkout)
     }
     
-    private func handleConfirmTokenEvent(_ token: String?) {
-        guard let token = token else {
-            dPrint("Confirm/ success event should come with a token")
+    private func handleStatusChange(_ rawStatus: String?) {
+        guard let rawStatus = rawStatus,
+            let status = CheckoutStatus(rawValue: rawStatus)
+            else {
+            dPrint("Status change should come with a valid a reason")
             return
         }
-        dPrint("Success event received \(token)")
-        delegate.checkoutHandle(checkoutToken: token) { [weak self] (success) in
-            self?.iFrameCommunicator.sendTokenConfirmation(with: success)
-        }
+        dPrint("New Status: \(status)")
+        delegate.checkoutStatusChanged(with: status)
     }
     
     private func handleCloseEvent(with result: String?) {
@@ -75,11 +76,10 @@ class CheckoutMessagesHandler: PostMessageHandler {
         let closeReason = CheckoutCloseReason(rawValue: result)
         dPrint("Close event received \(String(describing: closeReason))")
         
-        switch closeReason {
-        case .Dismiss?: delegate.checkoutDidCancel()
-        case .Success?: delegate.checkoutDidSuccess()
-        case .Cancel?: delegate.checkoutDidCancel()
-        default: dPrint("Unhandled close reason \(result)")
+        if let closeReason = closeReason {
+            delegate.checkoutFinished(with: closeReason)
+        } else {
+            dPrint("Unhandled close reason \(result)")
         }
     }
 }

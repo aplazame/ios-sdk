@@ -8,7 +8,7 @@
 
 import Foundation
 
+
 protocol IFrameCommunicator {
     func send(checkout: Checkout)
-    func sendTokenConfirmation(with success: Bool)
 }

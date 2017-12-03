@@ -10,14 +10,13 @@ import UIKit
 import WebKit
 
 public protocol AplazameCheckoutDelegate: class {
-    func checkoutDidCancel()
-    func checkoutDidSuccess()
-    func checkoutHandle(checkoutToken token: String, handler: (_ success: Bool) -> Void)
-    func checkoutFinished(with error: Error)
+    func checkoutReady()
+    func checkoutStatusChanged(with status: CheckoutStatus)
+    func checkoutFinished(with reason: CheckoutCloseReason)
 }
 
 public extension AplazameCheckoutDelegate {
-    func checkoutFinished(with error: Error) { }
+    func checkoutStatusChanged(with status: CheckoutStatus) {}
 }
 
 
@@ -94,7 +93,6 @@ class AplazameCheckoutViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = previusStatusBarStyle
     }
-
 }
 
 extension AplazameCheckoutViewController: WKNavigationDelegate {
@@ -103,15 +101,23 @@ extension AplazameCheckoutViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        delegate.checkoutFinished(with: error)
+        delegate.checkoutFinished(with: .ko)
         dismiss(animated: true, completion: nil)
     }
 }
 
 private class FakeAplazameCheckoutDelegate: AplazameCheckoutDelegate {
-    func checkoutDidCancel() {}
-    func checkoutDidSuccess() {}
-    func checkoutHandle(checkoutToken token: String, handler: (_ success: Bool) -> Void) {}
+    func checkoutReady() {
+        
+    }
+    
+    func checkoutFinished(with reason: CheckoutCloseReason) {
+        
+    }
+    
+    func checkoutStatusChanged(with status: CheckoutStatus) {
+        
+    }
 }
 
 private extension Checkout {
