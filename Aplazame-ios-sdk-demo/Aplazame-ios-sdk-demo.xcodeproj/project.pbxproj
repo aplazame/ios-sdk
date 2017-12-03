@@ -7,19 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B67C89D1CFF413D00A56D80 /* AplazameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B67C89C1CFF413D00A56D80 /* AplazameSDK.framework */; };
-		8B67C89F1CFF418900A56D80 /* AplazameSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B67C89C1CFF413D00A56D80 /* AplazameSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B67C8A31CFF4D2800A56D80 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B67C8A21CFF4D2800A56D80 /* UIButtonExtension.swift */; };
 		8BCE20DC1CFAE4FB00E85024 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE20DB1CFAE4FB00E85024 /* StringExtension.swift */; };
 		DD1F45E51D32416400AA584A /* OrderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1F45E41D32416400AA584A /* OrderExtension.swift */; };
 		DD1F45E71D32417E00AA584A /* CheckoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1F45E61D32417E00AA584A /* CheckoutExtension.swift */; };
+		DD447D8E1FD1AD7400001B52 /* AplazameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD447D891FD1AC2F00001B52 /* AplazameSDK.framework */; };
 		DD886EE61CDE090600B076C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD886EE51CDE090600B076C6 /* AppDelegate.swift */; };
 		DD886EE81CDE090600B076C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD886EE71CDE090600B076C6 /* ViewController.swift */; };
 		DD886EEB1CDE090600B076C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD886EE91CDE090600B076C6 /* Main.storyboard */; };
 		DD886EED1CDE090600B076C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD886EEC1CDE090600B076C6 /* Assets.xcassets */; };
 		DD886EF01CDE090600B076C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD886EEE1CDE090600B076C6 /* LaunchScreen.storyboard */; };
-		DD886EFB1CDE090700B076C6 /* Aplazame_ios_sdk_demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD886EFA1CDE090700B076C6 /* Aplazame_ios_sdk_demoTests.swift */; };
-		DD886F061CDE090700B076C6 /* Aplazame_ios_sdk_demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD886F051CDE090700B076C6 /* Aplazame_ios_sdk_demoUITests.swift */; };
 		DDDDC26D1CECE08D00EE8814 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC26C1CECE08D00EE8814 /* OrderTableViewController.swift */; };
 		DDDDC26F1CECE35B00EE8814 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC26E1CECE35B00EE8814 /* ArticleCell.swift */; };
 		DDDDC2711CECE39000EE8814 /* QuoteDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC2701CECE39000EE8814 /* QuoteDetailCell.swift */; };
@@ -30,19 +27,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DD886EF71CDE090700B076C6 /* PBXContainerItemProxy */ = {
+		DD447D881FD1AC2F00001B52 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DD886EDA1CDE090600B076C6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DD886EE11CDE090600B076C6;
-			remoteInfo = "Aplazame-ios-sdk-demo";
+			containerPortal = DD447D821FD1AC2F00001B52 /* Aplazame-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DD6601811CDBA2ED00C6E600;
+			remoteInfo = "Aplazame iOS SDK";
 		};
-		DD886F021CDE090700B076C6 /* PBXContainerItemProxy */ = {
+		DD447D8A1FD1AC2F00001B52 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DD886EDA1CDE090600B076C6 /* Project object */;
+			containerPortal = DD447D821FD1AC2F00001B52 /* Aplazame-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DD66018B1CDBA2ED00C6E600;
+			remoteInfo = "Aplazame iOS SDK Tests";
+		};
+		DD447D8C1FD1AD0500001B52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD447D821FD1AC2F00001B52 /* Aplazame-ios-sdk.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = DD886EE11CDE090600B076C6;
-			remoteInfo = "Aplazame-ios-sdk-demo";
+			remoteGlobalIDString = DD6601801CDBA2ED00C6E600;
+			remoteInfo = "Aplazame iOS SDK";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -53,7 +57,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8B67C89F1CFF418900A56D80 /* AplazameSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,11 +64,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8B67C89C1CFF413D00A56D80 /* AplazameSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AplazameSDK.framework; sourceTree = "<group>"; };
 		8B67C8A21CFF4D2800A56D80 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		8BCE20DB1CFAE4FB00E85024 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		DD1F45E41D32416400AA584A /* OrderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderExtension.swift; sourceTree = "<group>"; };
 		DD1F45E61D32417E00AA584A /* CheckoutExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutExtension.swift; sourceTree = "<group>"; };
+		DD447D821FD1AC2F00001B52 /* Aplazame-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Aplazame-ios-sdk.xcodeproj"; path = "../Aplazame-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		DD886EE21CDE090600B076C6 /* Aplazame-ios-sdk-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aplazame-ios-sdk-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD886EE51CDE090600B076C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD886EE71CDE090600B076C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,12 +76,6 @@
 		DD886EEC1CDE090600B076C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD886EEF1CDE090600B076C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD886EF11CDE090600B076C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD886EF61CDE090700B076C6 /* Aplazame-ios-sdk-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aplazame-ios-sdk-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD886EFA1CDE090700B076C6 /* Aplazame_ios_sdk_demoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aplazame_ios_sdk_demoTests.swift; sourceTree = "<group>"; };
-		DD886EFC1CDE090700B076C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD886F011CDE090700B076C6 /* Aplazame-ios-sdk-demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aplazame-ios-sdk-demoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD886F051CDE090700B076C6 /* Aplazame_ios_sdk_demoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aplazame_ios_sdk_demoUITests.swift; sourceTree = "<group>"; };
-		DD886F071CDE090700B076C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDDDC26C1CECE08D00EE8814 /* OrderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
 		DDDDC26E1CECE35B00EE8814 /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		DDDDC2701CECE39000EE8814 /* QuoteDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteDetailCell.swift; sourceTree = "<group>"; };
@@ -93,35 +90,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B67C89D1CFF413D00A56D80 /* AplazameSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DD886EF31CDE090700B076C6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DD886EFE1CDE090700B076C6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				DD447D8E1FD1AD7400001B52 /* AplazameSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD447D811FD1AC2F00001B52 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD447D821FD1AC2F00001B52 /* Aplazame-ios-sdk.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD447D831FD1AC2F00001B52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD447D891FD1AC2F00001B52 /* AplazameSDK.framework */,
+				DD447D8B1FD1AC2F00001B52 /* AplazameSDK-Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		DD886ED91CDE090600B076C6 = {
 			isa = PBXGroup;
 			children = (
-				8B67C89C1CFF413D00A56D80 /* AplazameSDK.framework */,
-				DD886EE41CDE090600B076C6 /* Aplazame-ios-sdk-demo */,
-				DD886EF91CDE090700B076C6 /* Aplazame-ios-sdk-demoTests */,
-				DD886F041CDE090700B076C6 /* Aplazame-ios-sdk-demoUITests */,
+				DD886EE41CDE090600B076C6 /* Source */,
 				DD886EE31CDE090600B076C6 /* Products */,
+				DD447D811FD1AC2F00001B52 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,13 +127,11 @@
 			isa = PBXGroup;
 			children = (
 				DD886EE21CDE090600B076C6 /* Aplazame-ios-sdk-demo.app */,
-				DD886EF61CDE090700B076C6 /* Aplazame-ios-sdk-demoTests.xctest */,
-				DD886F011CDE090700B076C6 /* Aplazame-ios-sdk-demoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DD886EE41CDE090600B076C6 /* Aplazame-ios-sdk-demo */ = {
+		DD886EE41CDE090600B076C6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				DD886EE51CDE090600B076C6 /* AppDelegate.swift */,
@@ -156,25 +152,7 @@
 				DDDDC27F1CECF55700EE8814 /* AppearanceExtension.swift */,
 				8B67C8A21CFF4D2800A56D80 /* UIButtonExtension.swift */,
 			);
-			path = "Aplazame-ios-sdk-demo";
-			sourceTree = "<group>";
-		};
-		DD886EF91CDE090700B076C6 /* Aplazame-ios-sdk-demoTests */ = {
-			isa = PBXGroup;
-			children = (
-				DD886EFA1CDE090700B076C6 /* Aplazame_ios_sdk_demoTests.swift */,
-				DD886EFC1CDE090700B076C6 /* Info.plist */,
-			);
-			path = "Aplazame-ios-sdk-demoTests";
-			sourceTree = "<group>";
-		};
-		DD886F041CDE090700B076C6 /* Aplazame-ios-sdk-demoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				DD886F051CDE090700B076C6 /* Aplazame_ios_sdk_demoUITests.swift */,
-				DD886F071CDE090700B076C6 /* Info.plist */,
-			);
-			path = "Aplazame-ios-sdk-demoUITests";
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,47 +170,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				DD447D8D1FD1AD0500001B52 /* PBXTargetDependency */,
 			);
 			name = "Aplazame-ios-sdk-demo";
 			productName = "Aplazame-ios-sdk-demo";
 			productReference = DD886EE21CDE090600B076C6 /* Aplazame-ios-sdk-demo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		DD886EF51CDE090700B076C6 /* Aplazame-ios-sdk-demoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DD886F0D1CDE090700B076C6 /* Build configuration list for PBXNativeTarget "Aplazame-ios-sdk-demoTests" */;
-			buildPhases = (
-				DD886EF21CDE090700B076C6 /* Sources */,
-				DD886EF31CDE090700B076C6 /* Frameworks */,
-				DD886EF41CDE090700B076C6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DD886EF81CDE090700B076C6 /* PBXTargetDependency */,
-			);
-			name = "Aplazame-ios-sdk-demoTests";
-			productName = "Aplazame-ios-sdk-demoTests";
-			productReference = DD886EF61CDE090700B076C6 /* Aplazame-ios-sdk-demoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		DD886F001CDE090700B076C6 /* Aplazame-ios-sdk-demoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DD886F101CDE090700B076C6 /* Build configuration list for PBXNativeTarget "Aplazame-ios-sdk-demoUITests" */;
-			buildPhases = (
-				DD886EFD1CDE090700B076C6 /* Sources */,
-				DD886EFE1CDE090700B076C6 /* Frameworks */,
-				DD886EFF1CDE090700B076C6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DD886F031CDE090700B076C6 /* PBXTargetDependency */,
-			);
-			name = "Aplazame-ios-sdk-demoUITests";
-			productName = "Aplazame-ios-sdk-demoUITests";
-			productReference = DD886F011CDE090700B076C6 /* Aplazame-ios-sdk-demoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -241,22 +184,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Andres Brun Moreno";
 				TargetAttributes = {
 					DD886EE11CDE090600B076C6 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
-					};
-					DD886EF51CDE090700B076C6 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
-						TestTargetID = DD886EE11CDE090600B076C6;
-					};
-					DD886F001CDE090700B076C6 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
-						TestTargetID = DD886EE11CDE090600B076C6;
+						LastSwiftMigration = 0910;
 					};
 				};
 			};
@@ -271,14 +204,35 @@
 			mainGroup = DD886ED91CDE090600B076C6;
 			productRefGroup = DD886EE31CDE090600B076C6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DD447D831FD1AC2F00001B52 /* Products */;
+					ProjectRef = DD447D821FD1AC2F00001B52 /* Aplazame-ios-sdk.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DD886EE11CDE090600B076C6 /* Aplazame-ios-sdk-demo */,
-				DD886EF51CDE090700B076C6 /* Aplazame-ios-sdk-demoTests */,
-				DD886F001CDE090700B076C6 /* Aplazame-ios-sdk-demoUITests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DD447D891FD1AC2F00001B52 /* AplazameSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AplazameSDK.framework;
+			remoteRef = DD447D881FD1AC2F00001B52 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DD447D8B1FD1AC2F00001B52 /* AplazameSDK-Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AplazameSDK-Tests.xctest";
+			remoteRef = DD447D8A1FD1AC2F00001B52 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DD886EE01CDE090600B076C6 /* Resources */ = {
@@ -288,20 +242,6 @@
 				DD886EF01CDE090600B076C6 /* LaunchScreen.storyboard in Resources */,
 				DD886EED1CDE090600B076C6 /* Assets.xcassets in Resources */,
 				DD886EEB1CDE090600B076C6 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DD886EF41CDE090700B076C6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DD886EFF1CDE090700B076C6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,34 +268,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD886EF21CDE090700B076C6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DD886EFB1CDE090700B076C6 /* Aplazame_ios_sdk_demoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DD886EFD1CDE090700B076C6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DD886F061CDE090700B076C6 /* Aplazame_ios_sdk_demoUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DD886EF81CDE090700B076C6 /* PBXTargetDependency */ = {
+		DD447D8D1FD1AD0500001B52 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DD886EE11CDE090600B076C6 /* Aplazame-ios-sdk-demo */;
-			targetProxy = DD886EF71CDE090700B076C6 /* PBXContainerItemProxy */;
-		};
-		DD886F031CDE090700B076C6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DD886EE11CDE090600B076C6 /* Aplazame-ios-sdk-demo */;
-			targetProxy = DD886F021CDE090700B076C6 /* PBXContainerItemProxy */;
+			name = "Aplazame iOS SDK";
+			targetProxy = DD447D8C1FD1AD0500001B52 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -388,14 +307,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -435,14 +360,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -475,11 +406,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Aplazame-ios-sdk-demo/Info.plist";
+				INFOPLIST_FILE = Source/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brunosSofware.Aplazame-ios-sdk-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -492,62 +423,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Aplazame-ios-sdk-demo/Info.plist";
+				INFOPLIST_FILE = Source/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brunosSofware.Aplazame-ios-sdk-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		DD886F0E1CDE090700B076C6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "Aplazame-ios-sdk-demoTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.brunosSofware.Aplazame-ios-sdk-demoTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aplazame-ios-sdk-demo.app/Aplazame-ios-sdk-demo";
-			};
-			name = Debug;
-		};
-		DD886F0F1CDE090700B076C6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "Aplazame-ios-sdk-demoTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.brunosSofware.Aplazame-ios-sdk-demoTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aplazame-ios-sdk-demo.app/Aplazame-ios-sdk-demo";
-			};
-			name = Release;
-		};
-		DD886F111CDE090700B076C6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "Aplazame-ios-sdk-demoUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.brunosSofware.Aplazame-ios-sdk-demoUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = "Aplazame-ios-sdk-demo";
-			};
-			name = Debug;
-		};
-		DD886F121CDE090700B076C6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "Aplazame-ios-sdk-demoUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.brunosSofware.Aplazame-ios-sdk-demoUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = "Aplazame-ios-sdk-demo";
 			};
 			name = Release;
 		};
@@ -568,24 +449,6 @@
 			buildConfigurations = (
 				DD886F0B1CDE090700B076C6 /* Debug */,
 				DD886F0C1CDE090700B076C6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DD886F0D1CDE090700B076C6 /* Build configuration list for PBXNativeTarget "Aplazame-ios-sdk-demoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DD886F0E1CDE090700B076C6 /* Debug */,
-				DD886F0F1CDE090700B076C6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DD886F101CDE090700B076C6 /* Build configuration list for PBXNativeTarget "Aplazame-ios-sdk-demoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DD886F111CDE090700B076C6 /* Debug */,
-				DD886F121CDE090700B076C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
