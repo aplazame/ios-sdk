@@ -76,7 +76,7 @@ extension Order {
         record["discount_rate"] = discountRate
         record["cart_discount"] = cartDiscount
         record["cart_discount_rate"] = cartDiscountRate
-//        record["currency"] = locale.objectForKey(NSLocaleCurrencyCode) as? String
+        record["currency"] = locale.currencyCode
         record["tax_rate"] = taxRate
         record["total_amount"] = totalAmount
         record["articles"] = articles.map { $0.record }
