@@ -38,7 +38,6 @@
 		DD3439ED1D04423700D0486A /* CheckoutMessagesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3439EC1D04423700D0486A /* CheckoutMessagesHandler.swift */; };
 		DD3439EF1D0443FF00D0486A /* WebViewContainerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3439EE1D0443FF00D0486A /* WebViewContainerViewTests.swift */; };
 		DD3439F11D04450400D0486A /* UnitTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3439F01D04450400D0486A /* UnitTestHelper.swift */; };
-		DD5819C11DCF25B900B3D88E /* WebViewLoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5819C01DCF25B900B3D88E /* WebViewLoadingViewTests.swift */; };
 		DD6601851CDBA2ED00C6E600 /* Aplazame-ios-sdk-private.h in Headers */ = {isa = PBXBuildFile; fileRef = DD6601841CDBA2ED00C6E600 /* Aplazame-ios-sdk-private.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD66018C1CDBA2ED00C6E600 /* AplazameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6601811CDBA2ED00C6E600 /* AplazameSDK.framework */; };
 		DD6601911CDBA2ED00C6E600 /* Aplazame_ios_sdk_privateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6601901CDBA2ED00C6E600 /* Aplazame_ios_sdk_privateTests.swift */; };
@@ -427,7 +426,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD5819C11DCF25B900B3D88E /* WebViewLoadingViewTests.swift in Sources */,
 				DD3439EF1D0443FF00D0486A /* WebViewContainerViewTests.swift in Sources */,
 				DD6601911CDBA2ED00C6E600 /* Aplazame_ios_sdk_privateTests.swift in Sources */,
 				8B31657E1CE8D0A600815460 /* CheckoutTests.swift in Sources */,
