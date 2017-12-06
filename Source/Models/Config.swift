@@ -22,7 +22,7 @@ extension Config {
     var record: APIRecordType {
         var record = APIRecordType()
         record["public_api_key"] = accessToken
-        record["sandbox"] = environment.sandboxValue
+        record["debug"] = environment.sandboxValue
         return record
     }
 }

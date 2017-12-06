@@ -11,15 +11,46 @@ import AplazameSDK
 
 final class ViewController: UIViewController {
     
+    fileprivate var checkout: Checkout? {
+        didSet {
+            checkoutButton.set(enabled: checkout != nil)
+        }
+    }
+    
+    @IBOutlet weak var loadingView: UIView! {
+        didSet {
+            loadingView.isHidden = true
+        }
+    }
     @IBOutlet weak var checkoutButton: UIButton! {
         didSet {
             checkoutButton.moveIconToRight()
+            checkoutButton.set(enabled: false)
         }
     }
     @IBOutlet weak var accessTokenTextField: UITextField!
     @IBAction func openCheckout(_ sender: AnyObject) {
-        if let text = accessTokenTextField.text , !text.isEmpty {
-            AplazameSDK.present(from: navigationController!, checkout: createCheckout(with: text), delegate: self)
+        loadingView.isHidden = false
+        guard let checkout = checkout else { return }
+        AplazameSDK.requestPresent(from: navigationController!,
+                                   checkout: checkout,
+                                   delegate: self,
+                                   onPresent: {
+            self.loadingView.isHidden = true
+        })
+    }
+    
+    @IBAction func checkAvailability(_ sender: AnyObject) {
+        guard let token = accessTokenTextField.text else { return }
+        let newCheckout = createCheckout(with: token)
+        AplazameSDK.checkAvailability(checkout: newCheckout) { [weak self] (status) in
+            switch status {
+            case .available:
+                self?.checkout = newCheckout
+            case .notAvailable, .undefined:
+                self?.presentAlert(title: "Disponibilidad",
+                                   message: "Aplazame no está disponible")
+            }
         }
     }
     
@@ -32,7 +63,11 @@ final class ViewController: UIViewController {
     }
     
     fileprivate lazy var order: Order = {
-        var order = Order.create(.randomID, locale: .current, taxRate: 20, totalAmount: 2000, discount: -362)
+        var order = Order.create(.randomID,
+                                 locale: .current,
+                                 taxRate: 20,
+                                 totalAmount: 2000,
+                                 discount: -362)
         order.addRandomArticles()
         return order
     }()
@@ -53,15 +88,30 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController: AplazameCheckoutDelegate {
-    func checkoutReady() {
-        print("checkout ready")
-    }
-    
     func checkoutStatusChanged(with status: CheckoutStatus) {
         print("checkoutStatusChanged \(status.rawValue)")
     }
     
     func checkoutFinished(with reason: CheckoutCloseReason) {
         print("checkoutDidFinishWithError \(reason.rawValue)")
+    }
+}
+
+extension UIButton {
+    func set(enabled: Bool) {
+        isEnabled = enabled
+        alpha = isEnabled ? 1.0 : 0.5
+    }
+}
+
+extension UIViewController {
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

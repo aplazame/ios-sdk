@@ -12,7 +12,6 @@ import WebKit
 let checkoutCallbackName = "checkout"
 
 /*
- "aplazame": "checkout"
  < event: checkout-ready
  < event: get-checkout-data
  > event: checkout-data.    data: <checkout_data>

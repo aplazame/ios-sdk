@@ -38,6 +38,7 @@
 		DD3439ED1D04423700D0486A /* CheckoutMessagesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3439EC1D04423700D0486A /* CheckoutMessagesHandler.swift */; };
 		DD3439EF1D0443FF00D0486A /* WebViewContainerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3439EE1D0443FF00D0486A /* WebViewContainerViewTests.swift */; };
 		DD3439F11D04450400D0486A /* UnitTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3439F01D04450400D0486A /* UnitTestHelper.swift */; };
+		DD447D911FD7F6E500001B52 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD447D901FD7F6E500001B52 /* APIManager.swift */; };
 		DD6601851CDBA2ED00C6E600 /* Aplazame-ios-sdk-private.h in Headers */ = {isa = PBXBuildFile; fileRef = DD6601841CDBA2ED00C6E600 /* Aplazame-ios-sdk-private.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD66018C1CDBA2ED00C6E600 /* AplazameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6601811CDBA2ED00C6E600 /* AplazameSDK.framework */; };
 		DD6601911CDBA2ED00C6E600 /* Aplazame_ios_sdk_privateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6601901CDBA2ED00C6E600 /* Aplazame_ios_sdk_privateTests.swift */; };
@@ -93,6 +94,7 @@
 		DD3439EC1D04423700D0486A /* CheckoutMessagesHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutMessagesHandler.swift; sourceTree = "<group>"; };
 		DD3439EE1D0443FF00D0486A /* WebViewContainerViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewContainerViewTests.swift; sourceTree = "<group>"; };
 		DD3439F01D04450400D0486A /* UnitTestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTestHelper.swift; sourceTree = "<group>"; };
+		DD447D901FD7F6E500001B52 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		DD6601811CDBA2ED00C6E600 /* AplazameSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AplazameSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6601841CDBA2ED00C6E600 /* Aplazame-ios-sdk-private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aplazame-ios-sdk-private.h"; sourceTree = "<group>"; };
 		DD6601861CDBA2ED00C6E600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				DDE1B5631CDDDD31000B21DB /* Router.swift */,
+				DD447D901FD7F6E500001B52 /* APIManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				DD66019D1CDBAF4B00C6E600 /* AplazameCheckoutViewController.swift in Sources */,
 				8B4B28791CE7938400C7CD48 /* Merchant.swift in Sources */,
 				8B4B28711CE7866300C7CD48 /* NSDateExtension.swift in Sources */,
+				DD447D911FD7F6E500001B52 /* APIManager.swift in Sources */,
 				8B4B28771CE78D0400C7CD48 /* DictionaryExtension.swift in Sources */,
 				DD6601AA1CDC73AE00C6E600 /* Config.swift in Sources */,
 			);

@@ -8,8 +8,6 @@
 
 import Foundation
 
-private let baseURL = URL(string: "https://aplazame.com/")!
-
 public enum Enviroment {
     case sandbox
     case production
@@ -30,13 +28,23 @@ public enum Enviroment {
     }
 }
 
+typealias RequestParameters = [String: String]
 
 enum Router {
     case checkout
+    case checkAvailability(Order)
+    
+    var baseURL: URL {
+        switch self {
+        case .checkout: return URL(string: "https://aplazame.com")!
+        case .checkAvailability: return URL(string: "https://api.aplazame.com")!
+        }
+    }
     
     var path: String {
         switch self {
-        case .checkout: return "static/checkout/iframe.html"
+        case .checkout: return "/static/checkout/iframe.html"
+        case .checkAvailability: return "/checkout/button"
         }
     }
     
@@ -45,5 +53,20 @@ enum Router {
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         components.queryItems = [URLQueryItem(name: "timestamp", value: Date().ISO8601GMTString)]
         return components.url!
+    }
+    
+    var params: RequestParameters {
+        switch self {
+        case .checkout: return [:]
+        case .checkAvailability(let order):
+            return ["amount": "\(order.totalAmount)",
+                    "currency": order.locale.currencyCode ?? ""]
+        }
+    }
+    
+    var method: String {
+        switch self {
+        case .checkAvailability, .checkout: return "GET"
+        }
     }
 }

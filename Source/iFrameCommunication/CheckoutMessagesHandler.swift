@@ -8,15 +8,24 @@
 
 import Foundation
 
+protocol CheckoutMessagesHandlerDelegate: class {
+    func checkoutReady()
+    func checkoutStatusChanged(with status: CheckoutStatus)
+    func checkoutFinished(with reason: CheckoutCloseReason)
+}
+
 class CheckoutMessagesHandler: PostMessageHandler {
-    let delegate: AplazameCheckoutDelegate
+    unowned let delegate: CheckoutMessagesHandlerDelegate
     let close: () -> Void
     let iFrameCommunicator: IFrameCommunicator
     let checkout: Checkout
     
     var callbackName: String { return checkoutCallbackName }
     
-    init(delegate: AplazameCheckoutDelegate, iFrameCommunicator: IFrameCommunicator, checkout: Checkout, close: @escaping () -> Void) {
+    init(delegate: CheckoutMessagesHandlerDelegate,
+         iFrameCommunicator: IFrameCommunicator,
+         checkout: Checkout,
+         close: @escaping () -> Void) {
         self.delegate = delegate
         self.iFrameCommunicator = iFrameCommunicator
         self.close = close
