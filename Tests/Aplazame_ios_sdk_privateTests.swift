@@ -16,7 +16,7 @@ class AplazameCheckoutViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        checkoutVC = AplazameCheckoutViewController.create(.createRandomCheckout(), delegate: delegate)
+        checkoutVC = AplazameCheckoutViewController.create(with: .createRandomCheckout(), delegate: delegate, onReady: { _ in })
         checkoutVC.simulateAppearance()
     }
     
@@ -27,9 +27,7 @@ class AplazameCheckoutViewControllerTests: XCTestCase {
 
 
 class DummyCheckoutViewControllerDelegate: AplazameCheckoutDelegate {
-    func checkoutHandle(checkoutToken token: String, handler: (Bool) -> Void) { }
-    func checkoutDidCancel() { }
-    func checkoutDidSuccess() { }
+    func checkoutFinished(with reason: CheckoutCloseReason) {}
 }
 
 extension AplazameCheckoutViewController {

@@ -30,11 +30,10 @@ class WebViewContainerViewTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
     
-    func testMessageHandlerReceiveConfirmTokenEvent_ShouldSendConfirmToken() {
-        iFrameCommunicator.sendTokenConfirmationExpectationSuccess = expectation(description: "Should require confirm token")
-        delegate.checkoutHandleTokenExpectation = expectation(description: "Should send confirm token")
+    func testMessageHandlerReceiveReady() {
+        delegate.checkoutReadyExpectation = expectation(description: "Should call ready")
         
-        sut.simulateConfirmTokenPostMessage()
+        sut.simulateCheckoutReadyPostMessage()
         
         waitForExpectations(timeout: 1, handler: nil)
     }
@@ -42,15 +41,15 @@ class WebViewContainerViewTests: XCTestCase {
     func testMessageHandlerReceiveSuccess() {
         delegate.checkoutSuccessExpectation = expectation(description: "Should call success")
         
-        sut.simulateClosePostMessage(.Success)
+        sut.simulateClosePostMessage(.success)
         
         waitForExpectations(timeout: 1, handler: nil)
     }
     
     func testMessageHandlerReceiveCancel() {
-        delegate.checkoutCancelExpectation = expectation(description: "Should call success")
+        delegate.checkoutKoExpectation = expectation(description: "Should call Ko")
         
-        sut.simulateClosePostMessage(.Cancel)
+        sut.simulateClosePostMessage(.ko)
         
         waitForExpectations(timeout: 1, handler: nil)
     }
@@ -60,21 +59,21 @@ extension WebViewContainerView {
     func simulateCheckoutMerchantPostMessage() {
         let scriptMessage = MockedScriptMessage(
             mockedName: checkoutCallbackName,
-            mockedBody: ["event": CheckoutPostMessageType.Merchant.rawValue])
+            mockedBody: ["event": CheckoutPostMessageType.getCheckoutData.rawValue])
         userContentController(configuration.userContentController, didReceive: scriptMessage)
     }
     
-    func simulateConfirmTokenPostMessage() {
+    func simulateCheckoutReadyPostMessage() {
         let scriptMessage = MockedScriptMessage(
             mockedName: checkoutCallbackName,
-            mockedBody: ["event": CheckoutPostMessageType.Confirm.rawValue, "data": "token"])
+            mockedBody: ["event": CheckoutPostMessageType.checkoutReady.rawValue])
         userContentController(configuration.userContentController, didReceive: scriptMessage)
     }
     
     func simulateClosePostMessage(_ reason: CheckoutCloseReason) {
         let scriptMessage = MockedScriptMessage(
             mockedName: checkoutCallbackName,
-            mockedBody: ["event": CheckoutPostMessageType.Close.rawValue, "result": reason.rawValue])
+            mockedBody: ["event": CheckoutPostMessageType.close.rawValue, "result": reason.rawValue])
         userContentController(configuration.userContentController, didReceive: scriptMessage)
     }
 }
@@ -92,47 +91,35 @@ class MockedScriptMessage: WKScriptMessage {
     }
 }
 
-class MockedDelegate: AplazameCheckoutDelegate {
-    var checkoutHandleTokenExpectation: XCTestExpectation?
+class MockedDelegate: CheckoutMessagesHandlerDelegate {
+    
+    var checkoutReadyExpectation: XCTestExpectation?
     var checkoutSuccessExpectation: XCTestExpectation?
-    var checkoutCancelExpectation: XCTestExpectation?
+    var checkoutKoExpectation: XCTestExpectation?
+    var checkoutPendingExpectation: XCTestExpectation?
     
+    func checkoutReady() {
+        checkoutReadyExpectation?.fulfill()
+    }
     
-    func checkoutDidCancel() {
-        checkoutCancelExpectation?.fulfill()
-    }
-   
-    func checkoutDidSuccess() {
-        checkoutSuccessExpectation?.fulfill()
-    }
-   
-    func checkoutHandle(checkoutToken token: String, handler: (Bool) -> Void) {
-        if !token.isEmpty {
-            checkoutHandleTokenExpectation?.fulfill()
-            handler(true)
-        } else {
-            handler(false)
+    func checkoutFinished(with reason: CheckoutCloseReason) {
+        switch reason {
+        case .dismiss, .success:
+            checkoutSuccessExpectation?.fulfill()
+        case .ko:
+            checkoutKoExpectation?.fulfill()
+        case .pending:
+            checkoutPendingExpectation?.fulfill()
         }
     }
-   
-    func checkoutFinished(with error: Error) {
-        
-    }
+    
+    func checkoutStatusChanged(with status: CheckoutStatus) { }
 }
 
 class MockedIFrameCommunicator: IFrameCommunicator {
-    var sendTokenConfirmationExpectationSuccess: XCTestExpectation?
-    var sendTokenConfirmationExpectationFailed: XCTestExpectation?
+
     var sendCheckoutExpectation: XCTestExpectation?
-    
-    func sendTokenConfirmation(with success: Bool) {
-        if success {
-            sendTokenConfirmationExpectationSuccess?.fulfill()
-        } else {
-            sendTokenConfirmationExpectationFailed?.fulfill()
-        }
-    }
-    
+
     func send(checkout: Checkout) {
         sendCheckoutExpectation?.fulfill()
     }

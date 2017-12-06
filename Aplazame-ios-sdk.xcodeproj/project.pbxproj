@@ -50,7 +50,6 @@
 		DD6601AA1CDC73AE00C6E600 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6601A91CDC73AE00C6E600 /* Config.swift */; };
 		DDA111911D9E3E1400B63741 /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA111901D9E3E1400B63741 /* WKWebViewExtension.swift */; };
 		DDC467511D8554F6007AD3B9 /* AplazameSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC467501D8554F6007AD3B9 /* AplazameSDK.swift */; };
-		DDE1B5601CDDD4EA000B21DB /* NSURLRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1B55F1CDDD4EA000B21DB /* NSURLRequestExtension.swift */; };
 		DDE1B5621CDDD508000B21DB /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1B5611CDDD508000B21DB /* ViewExtension.swift */; };
 		DDE1B5641CDDDD31000B21DB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1B5631CDDDD31000B21DB /* Router.swift */; };
 /* End PBXBuildFile section */
@@ -111,7 +110,6 @@
 		DDA111921D9E3F7600B63741 /* WebViewLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewLoadingView.swift; sourceTree = "<group>"; };
 		DDB4ABDE1DBEB0830019FB2D /* loading.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = loading.html; sourceTree = "<group>"; };
 		DDC467501D8554F6007AD3B9 /* AplazameSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AplazameSDK.swift; sourceTree = "<group>"; };
-		DDE1B55F1CDDD4EA000B21DB /* NSURLRequestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLRequestExtension.swift; sourceTree = "<group>"; };
 		DDE1B5611CDDD508000B21DB /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		DDE1B5631CDDDD31000B21DB /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -248,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				DDE1B5611CDDD508000B21DB /* ViewExtension.swift */,
-				DDE1B55F1CDDD4EA000B21DB /* NSURLRequestExtension.swift */,
 				8B4B28701CE7866300C7CD48 /* NSDateExtension.swift */,
 				8B4B28761CE78D0400C7CD48 /* DictionaryExtension.swift */,
 				DDA111901D9E3E1400B63741 /* WKWebViewExtension.swift */,
@@ -397,7 +394,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDC467511D8554F6007AD3B9 /* AplazameSDK.swift in Sources */,
-				DDE1B5601CDDD4EA000B21DB /* NSURLRequestExtension.swift in Sources */,
 				8B4B28751CE78C3D00C7CD48 /* ShippingInfo.swift in Sources */,
 				DDA111911D9E3E1400B63741 /* WKWebViewExtension.swift in Sources */,
 				DD3439ED1D04423700D0486A /* CheckoutMessagesHandler.swift in Sources */,
