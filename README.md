@@ -29,18 +29,35 @@ for up to date installation instructions.
 Add the following to your [Podfile](http://guides.cocoapods.org/using/the-podfile.html):
 
 ```ruby
-pod 'AplazameSDK-iOS'
+pod 'Aplazame-iOS-SDK'
 ```
 
 Then run `pod install` with CocoaPods 1.0 or newer.
 
 ### How to use ###
-`AplazameCheckoutViewController` needs two object in order to work:
+First at all you need to check if Aplazame is available for your checkout. The best way to do it is to call:
+```swift
+AplazameSDK.checkAvailability(checkout: checkout) { [weak self] (status) in
+  switch status {
+    case .available:
+      // Enable checkout button for instance
+    case .notAvailable, .undefined:
+      // Hide the checkout button for instance
+    }
+  }
+```
+
+After this check you need to request the checkout presentation. `AplazameSDK` needs 4 objects ito do this:
+- `viewController`: where it will be presented from.
 - `checkout`: it is the object where all information regarding with checkout is.
 - `delegate`: class that will receive payment flow callbacks.
+- `onPresent`: will be called when the checkout has been presented.
 
 ```swift
-AplazameSDK.present(from: navigationController!, checkout: checkout, delegate: self)
+// Start activity indicator
+AplazameSDK.requestPresent(from: navigationController!, checkout: checkout, delegate: self, onPresent: {
+  // Stop activity indicator
+  })
 ```
 
 The minimun information checkout object has to contain in order to work is: 
@@ -74,36 +91,26 @@ Order also contains other field as:
 - `discountRate`
 - `cartDiscount`
 
-Check the [demo project](https://github.com/aplazame/ios-sdk/tree/andresbrun-readme/Aplazame-ios-sdk-demo) to see an example of their use.
+Check the [demo project](https://github.com/aplazame/ios-sdk/Aplazame-ios-sdk-demo) to see an example of their use.
 
 Next, you will need an object that conform to `AplazameCheckoutDelegate` protocol. this object will receive following calls:
 
 ```swift
 extension ViewController: AplazameCheckoutDelegate {
-    func checkoutDidCancel() {
-         print("checkoutDidCancel")
-    }
+  func checkoutStatusChanged(with status: CheckoutStatus) {
+    print("checkoutStatusChanged \(status.rawValue)")
+  }
     
-    func checkoutDidSuccess() {
-         print("checkoutDidSuccess")
-    }
-    
-    func checkoutFinished(with error: Error) {
-        print("checkoutDidFinishWithError \(error.localizedDescription)")
-    }
-
-    func checkoutHandleCheckoutToken(token: String, handler: (success: Bool) -> Void) {
-        print("checkoutHandleCheckoutToken \(token)")
-        // Here is where token has to be verified with you own service
-        handler(success: true)
-    }
+  func checkoutFinished(with reason: CheckoutCloseReason) {
+    print("checkoutDidFinishWithError \(reason.rawValue)")
+  }
 }
 ```
 
 License
 -------
 
-Aplazame is Copyright (c) 2016 Aplazame, inc. It is free software, and may be
+Aplazame is Copyright (c) 2017 Aplazame, inc. It is free software, and may be
 redistributed under the terms specified in the [LICENSE] file.
 
 [LICENSE]: /LICENSE
