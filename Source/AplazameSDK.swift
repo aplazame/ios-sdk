@@ -15,29 +15,53 @@ public enum AplazameAvailabilityStatus {
 }
 
 public struct AplazameSDK {
-    public static var debugMode = false
     public static var version = 1.0
-    static let apiManager = APIManager()
+    public static var debugMode = false
+}
 
-    public static func requestPresent(from viewController: UIViewController,
-                                      checkout: Checkout,
-                                      delegate: AplazameCheckoutDelegate,
-                                      onPresent: @escaping () -> Void) {
+public struct APZPaymentContext {
+    fileprivate let apiManager = APIManager()
+    /**
+     config object to define environment information
+     */
+    fileprivate let config: Config
+    
+    public init(config: Config) {
+        self.config = config
+    }
+    
+    @discardableResult
+    public func requestCheckout(checkout: Checkout,
+                                delegate: AplazameCheckoutDelegate,
+                                onReady: @escaping (UIViewController) -> Void) -> UIViewController {
+        return AplazameCheckoutViewController.create(with: checkout,
+                                                     config: config,
+                                                     delegate: delegate,
+                                                     onReady: onReady)
+    }
+    
+    public func requestCheckout(from viewController: UIViewController,
+                                checkout: Checkout,
+                                delegate: AplazameCheckoutDelegate,
+                                onPresent: @escaping () -> Void) {
         let aplazameVC = AplazameCheckoutViewController.create(with: checkout,
+                                                               config: config,
                                                                delegate: delegate,
                                                                onReady: { vc in
-            viewController.present(vc, animated: true, completion: nil)
-            onPresent()
+                                                                viewController.present(vc,
+                                                                                       animated: true,
+                                                                                       completion: nil)
+                                                                onPresent()
         })
         aplazameVC.modalTransitionStyle = .crossDissolve
         aplazameVC.modalPresentationStyle = .overFullScreen
         aplazameVC.modalPresentationCapturesStatusBarAppearance = true
     }
     
-    public static func checkAvailability(checkout: Checkout,
-                                         callback: @escaping (AplazameAvailabilityStatus) -> Void) {
-        apiManager.request(route: .checkAvailability(checkout.order),
-                           token: checkout.merchant.config.accessToken) { (result) in
+    public func checkAvailability(order: Order,
+                                  callback: @escaping (AplazameAvailabilityStatus) -> Void) {
+        apiManager.request(route: .checkAvailability(order),
+                           token: config.accessToken) { (result) in
                             switch result {
                             case .success(let code, _):
                                 callback(code == 200 ? .available : .notAvailable)

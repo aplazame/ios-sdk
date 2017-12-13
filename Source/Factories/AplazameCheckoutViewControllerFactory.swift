@@ -10,9 +10,11 @@ import Foundation
 
 extension AplazameCheckoutViewController {
     static func create(with checkout: Checkout,
+                       config: Config,
                        delegate: AplazameCheckoutDelegate,
                        onReady: @escaping OnReadyCheckout) -> AplazameCheckoutViewController {
         return AplazameCheckoutViewController(checkout: checkout,
+                                              config: config,
                                               delegate: delegate,
                                               onReady: onReady)
     }

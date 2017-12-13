@@ -11,9 +11,10 @@ import AplazameSDK
 
 final class ViewController: UIViewController {
     
-    fileprivate var checkout: Checkout? {
+    fileprivate lazy var checkout: Checkout = createCheckout()
+    fileprivate var paymentContext: APZPaymentContext? {
         didSet {
-            checkoutButton.set(enabled: checkout != nil)
+            checkoutButton.set(enabled: paymentContext != nil)
         }
     }
     
@@ -31,27 +32,25 @@ final class ViewController: UIViewController {
     @IBOutlet weak var accessTokenTextField: UITextField!
     @IBAction func openCheckout(_ sender: AnyObject) {
         loadingView.isHidden = false
-        guard let checkout = checkout else { return }
-        AplazameSDK.requestPresent(from: navigationController!,
-                                   checkout: checkout,
-                                   delegate: self,
-                                   onPresent: {
+        paymentContext?.requestCheckout(checkout: checkout, delegate: self, onReady: { vc in
             self.loadingView.isHidden = true
+            self.navigationController?.pushViewController(vc, animated: true)
         })
     }
     
     @IBAction func checkAvailability(_ sender: AnyObject) {
         guard let token = accessTokenTextField.text else { return }
-        let newCheckout = createCheckout(with: token)
-        AplazameSDK.checkAvailability(checkout: newCheckout) { [weak self] (status) in
+        checkoutButton.set(enabled: false)
+        paymentContext = APZPaymentContext(config: Config(accessToken: token, environment: .sandbox))
+        paymentContext?.checkAvailability(order: checkout.order, callback: { [weak self] (status) in
             switch status {
             case .available:
-                self?.checkout = newCheckout
+                self?.checkoutButton.set(enabled: true)
             case .notAvailable, .undefined:
                 self?.presentAlert(title: "Disponibilidad",
                                    message: "Aplazame no está disponible")
             }
-        }
+        })
     }
     
     override func viewDidLoad() {
@@ -72,9 +71,8 @@ final class ViewController: UIViewController {
         return order
     }()
     
-    fileprivate func createCheckout(with token: String) -> Checkout {
-        let config = Config(accessToken: token, environment: .sandbox)
-        var checkout = Checkout.create(order, config: config)
+    fileprivate func createCheckout() -> Checkout {
+        var checkout = Checkout.create(order)
         checkout.addRandomShippingInfo()
         checkout.addRandomCustomer()
         checkout.addRandomBillingInfo()
@@ -83,7 +81,7 @@ final class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? OrderTableViewController else { return }
-        destination.checkout = createCheckout(with: "")
+        destination.checkout = createCheckout()
     }
 }
 

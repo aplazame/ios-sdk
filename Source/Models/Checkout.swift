@@ -19,10 +19,10 @@ public struct Checkout {
 }
 
 extension Checkout {
-    var record: APIRecordType {
+    func record(with config: Config) -> APIRecordType {
         var record = APIRecordType()
         record["order"] = order.record
-        record["merchant"] = merchant.record
+        record["merchant"] = merchant.record >< config.record
         record["customer"] = customer?.record
         record["billing"] = billingInfo?.record
         record["shipping"] = shippingInfo?.record
@@ -34,7 +34,12 @@ extension Checkout {
 }
 
 public extension Checkout {
-    public static func create(_ order: Order, config: Config) -> Checkout {
-        return Checkout(order: order, merchant: .create(config), customer: nil, billingInfo: nil, shippingInfo: nil, additionalInfo: nil)
+    public static func create(_ order: Order) -> Checkout {
+        return Checkout(order: order,
+                        merchant: .create(),
+                        customer: nil,
+                        billingInfo: nil,
+                        shippingInfo: nil,
+                        additionalInfo: nil)
     }
 }

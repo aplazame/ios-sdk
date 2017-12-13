@@ -40,22 +40,17 @@ struct Merchant {
     /**
      (Sólo aplica si la API de confirmación está configurada) Indica si el resultado de la solicitud de crédito aprobada por Aplazame debe completarse informando al usuario en el proceso de checkout
      */
-    let confirmOnCheckout: Bool = true
-    /**
-     config object to define environment information
-    */
-    let config: Config
+    let confirmOnCheckout: Bool = true    
 }
 
 extension Merchant {
-    static func create(_ config: Config) -> Merchant {
+    static func create() -> Merchant {
         return Merchant(confirmationUrl: "/confirmation",
                         cancelUrl: "/cancel",
                         successUrl: "/success",
                         pendingUrl: "/pending",
                         koURL: "/ko",
-                        checkoutUrl: "/checkout",
-                        config: config)
+                        checkoutUrl: "/checkout")
     }
 }
 
@@ -71,7 +66,6 @@ extension Merchant {
         record["ko_url"] = koURL
         record["timeout_checkout"] = timeoutCheckout
         record["confirm_on_checkout"] = confirmOnCheckout
-        
-        return record >< config.record
+        return record
     }
 }

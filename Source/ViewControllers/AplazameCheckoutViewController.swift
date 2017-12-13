@@ -25,15 +25,18 @@ class AplazameCheckoutViewController: UIViewController {
     fileprivate unowned let delegate: AplazameCheckoutDelegate
     fileprivate let onReady: OnReadyCheckout
     fileprivate let checkout: Checkout
+    fileprivate let config: Config
     fileprivate var previusStatusBarStyle: UIStatusBarStyle!
     
     fileprivate lazy var checkoutMasegeHandler: CheckoutMessagesHandler = self.createPostMessageHandler()
     lazy var webView: WebViewContainerView = WebViewContainerView(postMessageHandlers: [self.checkoutMasegeHandler])
     
     init(checkout: Checkout,
+         config: Config,
          delegate: AplazameCheckoutDelegate,
          onReady: @escaping OnReadyCheckout) {
         self.checkout = checkout
+        self.config = config
         self.delegate = delegate
         self.onReady = onReady
         
@@ -73,7 +76,8 @@ class AplazameCheckoutViewController: UIViewController {
     fileprivate func createPostMessageHandler() -> CheckoutMessagesHandler {
         return CheckoutMessagesHandler(delegate: self,
                                        iFrameCommunicator: self,
-                                       checkout: checkout) { [unowned self] in
+                                       checkout: checkout,
+                                       config: config) { [unowned self] in
             self.dismiss(animated: true, completion: nil)
         }
     }

@@ -19,17 +19,20 @@ class CheckoutMessagesHandler: PostMessageHandler {
     let close: () -> Void
     let iFrameCommunicator: IFrameCommunicator
     let checkout: Checkout
+    let config: Config
     
     var callbackName: String { return checkoutCallbackName }
     
     init(delegate: CheckoutMessagesHandlerDelegate,
          iFrameCommunicator: IFrameCommunicator,
          checkout: Checkout,
+         config: Config,
          close: @escaping () -> Void) {
         self.delegate = delegate
         self.iFrameCommunicator = iFrameCommunicator
         self.close = close
         self.checkout = checkout
+        self.config = config
     }
     
     func handle(receivedMessage message: ScriptMessageType) {
@@ -63,7 +66,7 @@ class CheckoutMessagesHandler: PostMessageHandler {
     
     private func handleCheckoutEvent() {
         dPrint("Merchant event received")
-        iFrameCommunicator.send(checkout: checkout)
+        iFrameCommunicator.send(checkout: checkout, config: config)
     }
     
     private func handleStatusChange(_ rawStatus: String?) {
