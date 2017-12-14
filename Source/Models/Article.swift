@@ -12,37 +12,37 @@ typealias APIRecordType = [String: Any]
 public typealias Decimal = Int
 
 
-public struct Article {
+public struct APZArticle {
     /**
      The article ID.
      */
     let id: String
     /**
-     Article name.
+     APZArticle name.
      */
     public let name: String
     /**
-     Article description.
+     APZArticle description.
      */
     public let description: String?
     /**
-     Article url.
+     APZArticle url.
      */
     public let url: URL
     /**
-     Article image url.
+     APZArticle image url.
      */
     public let imageUrl: URL
     /**
-     Article quantity.
+     APZArticle quantity.
      */
     public let quantity: Int
     /**
-     Article price (tax is not included).
+     APZArticle price (tax is not included).
      */
     public let price: Decimal
     /**
-     Article tax_rate.
+     APZArticle tax_rate.
      */
     public let taxRate: Decimal?
     /**
@@ -55,7 +55,7 @@ public struct Article {
     public let discountRate: Decimal?
 }
 
-public extension Article {
+public extension APZArticle {
     public static func create(
         _ id: String,
         name: String,
@@ -66,13 +66,13 @@ public extension Article {
         price: Int,
         taxRate: Int = 0,
         discount: Int = 0,
-        discountRate: Int = 0) -> Article
+        discountRate: Int = 0) -> APZArticle
     {
-        return Article(id: id, name: name, description: description, url: url, imageUrl: imageUrl, quantity: quantity, price: price, taxRate: taxRate, discount: discount, discountRate: discountRate)
+        return APZArticle(id: id, name: name, description: description, url: url, imageUrl: imageUrl, quantity: quantity, price: price, taxRate: taxRate, discount: discount, discountRate: discountRate)
     }
 }
 
-extension Article {
+extension APZArticle {
     var record: APIRecordType {
         var record = APIRecordType()
         record["id"] = id as AnyObject?

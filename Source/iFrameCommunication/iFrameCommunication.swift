@@ -25,21 +25,21 @@ enum CheckoutPostMessageType: String {
     case close = "close"
 }
 
-public enum CheckoutCloseReason: String {
+public enum APZCheckoutCloseReason: String {
     case success = "success"
     case pending = "pending"
     case dismiss = "dismiss"
     case ko = "ko"
 }
 
-public enum CheckoutStatus: String {
+public enum APZCheckoutStatus: String {
     case pending = "pending"
     case success = "success"
     case ko = "ko"
 }
 
 extension AplazameCheckoutViewController: IFrameCommunicator {
-    func send(checkout: Checkout, config: Config) {
+    func send(checkout: APZCheckout, config: APZConfig) {
         let allInfoJSON = try! JSONSerialization.data(withJSONObject: checkout.record(with: config), options: JSONSerialization.WritingOptions(rawValue: 0))
         let allInfoJSONString = NSString(data: allInfoJSON, encoding: String.Encoding.utf8.rawValue)!.replacingOccurrences(of: "'", with: "\'")
         

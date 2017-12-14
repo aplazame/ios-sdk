@@ -1,5 +1,5 @@
 //
-//  ShippingInfo.swift
+//  APZShippingInfo.swift
 //  Aplazame-sdk
 //
 //  Created by Andres Brun on 14/05/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ShippingInfo {
+public struct APZShippingInfo {
     /**
      Shipping name.
      */
@@ -30,25 +30,25 @@ public struct ShippingInfo {
      */
     public let discountRate: Decimal?
     /**
-     Shipping Address
+     Shipping APZAddress
      */
-    public let address: Address
+    public let address: APZAddress
 }
 
-public extension ShippingInfo {
+public extension APZShippingInfo {
     public static func create(
         _ name: String,
         price: Int,
-        address: Address,
+        address: APZAddress,
         taxRate: Int? = nil,
         discount: Int? = nil,
-        discountRate: Int? = nil) -> ShippingInfo
+        discountRate: Int? = nil) -> APZShippingInfo
     {
-        return ShippingInfo(name: name, price: price, taxRate: taxRate, discount: discount, discountRate: discountRate, address: address)
+        return APZShippingInfo(name: name, price: price, taxRate: taxRate, discount: discount, discountRate: discountRate, address: address)
     }
 }
 
-extension ShippingInfo {
+extension APZShippingInfo {
     var record: APIRecordType {
         var record = APIRecordType()
         record["name"] = name

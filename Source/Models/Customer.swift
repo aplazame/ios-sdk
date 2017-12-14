@@ -1,5 +1,5 @@
 //
-//  Customer.swift
+//  APZCustomer.swift
 //  Aplazame-sdk
 //
 //  Created by Andres Brun on 14/05/16.
@@ -21,9 +21,9 @@ public enum CustomerGender: String {
     case Unknown = "0"
 }
 
-public struct Customer {
+public struct APZCustomer {
     /**
-     Customer ID.
+     APZCustomer ID.
      */
     let id: String
     /**
@@ -31,23 +31,23 @@ public struct Customer {
      */
     let email: String
     /**
-     Customer type, the choices are g:guest, n:new, e:existing.
+     APZCustomer type, the choices are g:guest, n:new, e:existing.
      */
     let type: CustomerType
     /**
-     Customer gender, the choices are 0: not known, 1: male, 2:female, 3: not applicable.
+     APZCustomer gender, the choices are 0: not known, 1: male, 2:female, 3: not applicable.
      */
     let gender: CustomerGender
     /**
-     Customer first name.
+     APZCustomer first name.
      */
     let firstName: String?
     /**
-     Customer last name.
+     APZCustomer last name.
      */
     let lastName: String?
     /**
-     Customer birthday
+     APZCustomer birthday
      */
     let birthday: Date?
     /**
@@ -63,12 +63,12 @@ public struct Customer {
      */
     let lastLogin: Date?
     /**
-     Customer address.
+     APZCustomer address.
      */
     let address: CustomerAddress?
 }
 
-public extension Customer {
+public extension APZCustomer {
     public static func create(
         _ id: String,
         email: String,
@@ -80,20 +80,20 @@ public extension Customer {
         locale: Locale? = nil,
         dateJoined: Date? = nil,
         lastLogin: Date? = nil,
-        address: CustomerAddress? = nil) -> Customer
+        address: CustomerAddress? = nil) -> APZCustomer
     {
-        return Customer(id: id, email: email, type: type, gender: gender, firstName: firstName, lastName: lastName, birthday: birthday, locale: locale, dateJoined: dateJoined, lastLogin: lastLogin, address: address)
+        return APZCustomer(id: id, email: email, type: type, gender: gender, firstName: firstName, lastName: lastName, birthday: birthday, locale: locale, dateJoined: dateJoined, lastLogin: lastLogin, address: address)
     }
 }
 
-extension Customer {
+extension APZCustomer {
     var record: APIRecordType {
         var record = APIRecordType()
         record["birthday"] = birthday?.ISO8601GMTString
         record["date_joined"] = dateJoined?.ISO8601GMTString
         record["last_login"] = lastLogin?.ISO8601GMTString
         record["id"] = id
-//        record["language"] = locale.object(forKey: .languageCode) as? String // TODO: check
+        record["language"] = locale?.languageCode
         record["email"] = email
         record["type"] = type.rawValue
         record["gender"] = gender.rawValue

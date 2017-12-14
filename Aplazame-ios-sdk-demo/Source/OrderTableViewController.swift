@@ -10,7 +10,7 @@ import UIKit
 import AplazameSDK
 
 class OrderTableViewController: UITableViewController {
-    var checkout: Checkout! {
+    var checkout: APZCheckout! {
         didSet {
             cellsData = checkout.createCellsData()
         }
@@ -60,8 +60,8 @@ extension OrderTableViewController {
 }
 
 enum CellDataType {
-    case articleType([Article])
-    case shippingType(ShippingInfo)
+    case articleType([APZArticle])
+    case shippingType(APZShippingInfo)
     case discountType(Int)
     case totalType(Int)
     
@@ -73,7 +73,7 @@ enum CellDataType {
     }
 }
 
-private extension Checkout {
+private extension APZCheckout {
     func createCellsData() -> [CellDataType] {
         var cellsData = [CellDataType]()
         

@@ -10,12 +10,12 @@ import UIKit
 import WebKit
 
 public protocol AplazameCheckoutDelegate: class {
-    func checkoutStatusChanged(with status: CheckoutStatus)
-    func checkoutFinished(with reason: CheckoutCloseReason)
+    func checkoutStatusChanged(with status: APZCheckoutStatus)
+    func checkoutDidClose(checkoutVC: UIViewController, with reason: APZCheckoutCloseReason)
 }
 
 public extension AplazameCheckoutDelegate {
-    func checkoutStatusChanged(with status: CheckoutStatus) {}
+    func checkoutStatusChanged(with status: APZCheckoutStatus) {}
 }
 
 typealias OnReadyCheckout = (AplazameCheckoutViewController) -> Void
@@ -24,15 +24,15 @@ class AplazameCheckoutViewController: UIViewController {
     
     fileprivate unowned let delegate: AplazameCheckoutDelegate
     fileprivate let onReady: OnReadyCheckout
-    fileprivate let checkout: Checkout
-    fileprivate let config: Config
+    fileprivate let checkout: APZCheckout
+    fileprivate let config: APZConfig
     fileprivate var previusStatusBarStyle: UIStatusBarStyle!
     
     fileprivate lazy var checkoutMasegeHandler: CheckoutMessagesHandler = self.createPostMessageHandler()
     lazy var webView: WebViewContainerView = WebViewContainerView(postMessageHandlers: [self.checkoutMasegeHandler])
     
-    init(checkout: Checkout,
-         config: Config,
+    init(checkout: APZCheckout,
+         config: APZConfig,
          delegate: AplazameCheckoutDelegate,
          onReady: @escaping OnReadyCheckout) {
         self.checkout = checkout
@@ -106,12 +106,12 @@ extension AplazameCheckoutViewController: CheckoutMessagesHandlerDelegate {
         onReady(self)
     }
     
-    func checkoutStatusChanged(with status: CheckoutStatus) {
+    func checkoutStatusChanged(with status: APZCheckoutStatus) {
         delegate.checkoutStatusChanged(with: status)
     }
     
-    func checkoutFinished(with reason: CheckoutCloseReason) {
-        delegate.checkoutFinished(with: reason)
+    func checkoutDidClose(with reason: APZCheckoutCloseReason) {
+        delegate.checkoutDidClose(checkoutVC: self, with: reason)
     }
 }
 
@@ -121,7 +121,6 @@ extension AplazameCheckoutViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        delegate.checkoutFinished(with: .ko)
-        dismiss(animated: true, completion: nil)
+        delegate.checkoutDidClose(checkoutVC: self, with: .ko)
     }
 }

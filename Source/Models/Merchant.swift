@@ -1,5 +1,5 @@
 //
-//  Merchant.swift
+//  APZMerchant.swift
 //  Aplazame-sdk
 //
 //  Created by Andres Brun on 14/05/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Merchant {
+struct APZMerchant {
     /**
      url that the JS client sent to confirming the order.
      */
@@ -43,9 +43,9 @@ struct Merchant {
     let confirmOnCheckout: Bool = true    
 }
 
-extension Merchant {
-    static func create() -> Merchant {
-        return Merchant(confirmationUrl: "/confirmation",
+extension APZMerchant {
+    static func create() -> APZMerchant {
+        return APZMerchant(confirmationUrl: "/confirmation",
                         cancelUrl: "/cancel",
                         successUrl: "/success",
                         pendingUrl: "/pending",
@@ -54,7 +54,7 @@ extension Merchant {
     }
 }
 
-extension Merchant {
+extension APZMerchant {
     var record: APIRecordType {
         var record = APIRecordType()
         record["confirmation_url"] = confirmationUrl

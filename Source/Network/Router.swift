@@ -32,7 +32,7 @@ typealias RequestParameters = [String: String]
 
 enum Router {
     case checkout
-    case checkAvailability(Order)
+    case checkAvailability(APZOrder)
     
     var baseURL: URL {
         switch self {

@@ -8,40 +8,40 @@
 
 import Foundation
 
-public typealias CustomerAddress = Address
-public typealias BillingInfo = Address
+public typealias CustomerAddress = APZAddress
+public typealias BillingInfo = APZAddress
 
-public struct Address {
+public struct APZAddress {
     /**
-     Address first name.
+     APZAddress first name.
      */
     let firstName: String
     /**
-     Address last name.
+     APZAddress last name.
      */
     let lastName: String
     /**
-     Address phone number.
+     APZAddress phone number.
      */
     let phone: String?
     /**
-     Address alternative phone.
+     APZAddress alternative phone.
      */
     let altPhone: String?
     /**
-     Address street.
+     APZAddress street.
      */
     let street: String
     /**
-     Address address addition.
+     APZAddress address addition.
      */
     let addressAddition: String?
     /**
-     Address city.
+     APZAddress city.
      */
     let city: String
     /**
-     Address state.
+     APZAddress state.
      */
     let state: String
     /**
@@ -49,12 +49,12 @@ public struct Address {
      */
     let locale: Locale
     /**
-     Address postcode.
+     APZAddress postcode.
      */
     let postcode: String
 }
 
-public extension Address {
+public extension APZAddress {
     public static func create(
         _ firstName: String,
         lastName: String,
@@ -65,13 +65,13 @@ public extension Address {
         postcode: String,
         phone: String? = nil,
         altPhone: String? = nil,
-        addressAddition: String? = nil) -> Address
+        addressAddition: String? = nil) -> APZAddress
     {
-        return Address(firstName: firstName, lastName: lastName, phone: phone, altPhone: altPhone, street: street, addressAddition: addressAddition, city: city, state: state, locale: locale, postcode: postcode)
+        return APZAddress(firstName: firstName, lastName: lastName, phone: phone, altPhone: altPhone, street: street, addressAddition: addressAddition, city: city, state: state, locale: locale, postcode: postcode)
     }
 }
 
-extension Address {
+extension APZAddress {
     var record: APIRecordType {
         var record = APIRecordType()
         record["first_name"] = firstName as AnyObject?

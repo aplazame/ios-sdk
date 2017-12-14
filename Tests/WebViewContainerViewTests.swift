@@ -70,7 +70,7 @@ extension WebViewContainerView {
         userContentController(configuration.userContentController, didReceive: scriptMessage)
     }
     
-    func simulateClosePostMessage(_ reason: CheckoutCloseReason) {
+    func simulateClosePostMessage(_ reason: APZCheckoutCloseReason) {
         let scriptMessage = MockedScriptMessage(
             mockedName: checkoutCallbackName,
             mockedBody: ["event": CheckoutPostMessageType.close.rawValue, "result": reason.rawValue])
@@ -102,7 +102,7 @@ class MockedDelegate: CheckoutMessagesHandlerDelegate {
         checkoutReadyExpectation?.fulfill()
     }
     
-    func checkoutFinished(with reason: CheckoutCloseReason) {
+    func checkoutDidClose(with reason: APZCheckoutCloseReason) {
         switch reason {
         case .dismiss, .success:
             checkoutSuccessExpectation?.fulfill()
@@ -113,14 +113,14 @@ class MockedDelegate: CheckoutMessagesHandlerDelegate {
         }
     }
     
-    func checkoutStatusChanged(with status: CheckoutStatus) { }
+    func checkoutStatusChanged(with status: APZCheckoutStatus) { }
 }
 
 class MockedIFrameCommunicator: IFrameCommunicator {
 
     var sendCheckoutExpectation: XCTestExpectation?
 
-    func send(checkout: Checkout) {
+    func send(checkout: APZCheckout) {
         sendCheckoutExpectation?.fulfill()
     }
 }

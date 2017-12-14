@@ -11,7 +11,7 @@ import AplazameSDK
 
 final class ViewController: UIViewController {
     
-    fileprivate lazy var checkout: Checkout = createCheckout()
+    fileprivate lazy var checkout: APZCheckout = createCheckout()
     fileprivate var paymentContext: APZPaymentContext? {
         didSet {
             checkoutButton.set(enabled: paymentContext != nil)
@@ -41,7 +41,7 @@ final class ViewController: UIViewController {
     @IBAction func checkAvailability(_ sender: AnyObject) {
         guard let token = accessTokenTextField.text else { return }
         checkoutButton.set(enabled: false)
-        paymentContext = APZPaymentContext(config: Config(accessToken: token, environment: .sandbox))
+        paymentContext = APZPaymentContext(config: APZConfig(accessToken: token, environment: .sandbox))
         paymentContext?.checkAvailability(order: checkout.order, callback: { [weak self] (status) in
             switch status {
             case .available:
@@ -61,8 +61,8 @@ final class ViewController: UIViewController {
         AplazameSDK.debugMode = true
     }
     
-    fileprivate lazy var order: Order = {
-        var order = Order.create(.randomID,
+    fileprivate lazy var order: APZOrder = {
+        var order = APZOrder.create(.randomID,
                                  locale: .current,
                                  taxRate: 20,
                                  totalAmount: 2000,
@@ -71,8 +71,8 @@ final class ViewController: UIViewController {
         return order
     }()
     
-    fileprivate func createCheckout() -> Checkout {
-        var checkout = Checkout.create(order)
+    fileprivate func createCheckout() -> APZCheckout {
+        var checkout = APZCheckout.create(order)
         checkout.addRandomShippingInfo()
         checkout.addRandomCustomer()
         checkout.addRandomBillingInfo()
@@ -81,17 +81,18 @@ final class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? OrderTableViewController else { return }
-        destination.checkout = createCheckout()
+        destination.checkout = checkout
     }
 }
 
 extension ViewController: AplazameCheckoutDelegate {
-    func checkoutStatusChanged(with status: CheckoutStatus) {
-        print("checkoutStatusChanged \(status.rawValue)")
+    func checkoutDidClose(checkoutVC: UIViewController, with reason: APZCheckoutCloseReason) {
+        print("checkoutDidFinishWithError \(reason.rawValue)")
+        checkoutVC.dismiss(animated: true, completion: nil)
     }
     
-    func checkoutFinished(with reason: CheckoutCloseReason) {
-        print("checkoutDidFinishWithError \(reason.rawValue)")
+    func checkoutStatusChanged(with status: APZCheckoutStatus) {
+        print("checkoutStatusChanged \(status.rawValue)")
     }
 }
 

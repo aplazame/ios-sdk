@@ -27,7 +27,7 @@ class AplazameCheckoutViewControllerTests: XCTestCase {
 
 
 class DummyCheckoutViewControllerDelegate: AplazameCheckoutDelegate {
-    func checkoutFinished(with reason: CheckoutCloseReason) {}
+    func checkoutDidClose(with reason: APZCheckoutCloseReason) {}
 }
 
 extension AplazameCheckoutViewController {

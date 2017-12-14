@@ -24,14 +24,14 @@ public struct APZPaymentContext {
     /**
      config object to define environment information
      */
-    fileprivate let config: Config
+    fileprivate let config: APZConfig
     
-    public init(config: Config) {
+    public init(config: APZConfig) {
         self.config = config
     }
     
     @discardableResult
-    public func requestCheckout(checkout: Checkout,
+    public func requestCheckout(checkout: APZCheckout,
                                 delegate: AplazameCheckoutDelegate,
                                 onReady: @escaping (UIViewController) -> Void) -> UIViewController {
         return AplazameCheckoutViewController.create(with: checkout,
@@ -41,7 +41,7 @@ public struct APZPaymentContext {
     }
     
     public func requestCheckout(from viewController: UIViewController,
-                                checkout: Checkout,
+                                checkout: APZCheckout,
                                 delegate: AplazameCheckoutDelegate,
                                 onPresent: @escaping () -> Void) {
         let aplazameVC = AplazameCheckoutViewController.create(with: checkout,
@@ -58,7 +58,7 @@ public struct APZPaymentContext {
         aplazameVC.modalPresentationCapturesStatusBarAppearance = true
     }
     
-    public func checkAvailability(order: Order,
+    public func checkAvailability(order: APZOrder,
                                   callback: @escaping (AplazameAvailabilityStatus) -> Void) {
         apiManager.request(route: .checkAvailability(order),
                            token: config.accessToken) { (result) in
