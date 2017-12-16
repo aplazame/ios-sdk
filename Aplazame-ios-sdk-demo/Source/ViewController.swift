@@ -34,6 +34,7 @@ final class ViewController: UIViewController {
         loadingView.isHidden = false
         paymentContext?.requestCheckout(checkout: checkout, delegate: self, onReady: { vc in
             self.loadingView.isHidden = true
+            vc.title = "Aplazame"
             self.navigationController?.pushViewController(vc, animated: true)
         })
     }
@@ -55,6 +56,7 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Checkout"
         navigationItem.applyLogo()
         navigationController?.applyStyle()
         
