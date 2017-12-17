@@ -12,16 +12,20 @@ import WebKit
 
 class WebViewContainerViewTests: XCTestCase {
 
-    lazy var sut: WebViewContainerView = {
-        return WebViewContainerView(postMessageHandlers: [self.checkoutMessageHandler])
+    fileprivate let basicConfig = APZConfig.createBasicConfig()
+    fileprivate let delegate = MockedDelegate()
+    fileprivate let iFrameCommunicator = MockedIFrameCommunicator()
+    
+    fileprivate lazy var sut: WebViewContainerView = {
+        return WebViewContainerView(postMessageHandlers: [checkoutMessageHandler])
     }()
-    lazy var checkoutMessageHandler: CheckoutMessagesHandler = {
-        return CheckoutMessagesHandler(delegate: self.delegate, iFrameCommunicator: self.iFrameCommunicator, checkout: .createRandomCheckout()) { }
+    fileprivate lazy var checkoutMessageHandler: CheckoutMessagesHandler = {
+        return CheckoutMessagesHandler(delegate: delegate,
+                                       iFrameCommunicator: iFrameCommunicator,
+                                       checkout: .createRandomCheckout(),
+                                       config: basicConfig) { }
     }()
-        
-    let delegate = MockedDelegate()
-    let iFrameCommunicator = MockedIFrameCommunicator()
-
+    
     func testMessageHandlerReceiveMerchantEvent_ShouldRequireCheckout() {
         iFrameCommunicator.sendCheckoutExpectation = expectation(description: "Should send checkout")
         
@@ -117,10 +121,9 @@ class MockedDelegate: CheckoutMessagesHandlerDelegate {
 }
 
 class MockedIFrameCommunicator: IFrameCommunicator {
-
     var sendCheckoutExpectation: XCTestExpectation?
 
-    func send(checkout: APZCheckout) {
+    func send(checkout: APZCheckout, config: APZConfig) {
         sendCheckoutExpectation?.fulfill()
     }
 }

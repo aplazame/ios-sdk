@@ -13,10 +13,14 @@ class AplazameCheckoutViewControllerTests: XCTestCase {
     
     fileprivate let delegate = DummyCheckoutViewControllerDelegate()
     fileprivate var checkoutVC: AplazameCheckoutViewController!
+    fileprivate let basicConfig = APZConfig.createBasicConfig()
 
     override func setUp() {
         super.setUp()
-        checkoutVC = AplazameCheckoutViewController.create(with: .createRandomCheckout(), delegate: delegate, onReady: { _ in })
+        checkoutVC = AplazameCheckoutViewController.create(with: .createRandomCheckout(),
+                                                           config: basicConfig,
+                                                           delegate: delegate,
+                                                           onReady: { _ in })
         checkoutVC.simulateAppearance()
     }
     
@@ -27,7 +31,7 @@ class AplazameCheckoutViewControllerTests: XCTestCase {
 
 
 class DummyCheckoutViewControllerDelegate: APZPaymentContextDelegate {
-    func checkoutDidClose(with reason: APZCheckoutCloseReason) {}
+    func checkoutDidClose(checkoutVC: UIViewController, with reason: APZCheckoutCloseReason) {}
 }
 
 extension AplazameCheckoutViewController {

@@ -9,16 +9,16 @@
 import Foundation
 
 public enum CustomerType: String {
-    case Guest = "g"
-    case New = "n"
-    case Existing = "e"
+    case guest = "g"
+    case new = "n"
+    case existing = "e"
 }
 
 public enum CustomerGender: String {
-    case Male = "1"
-    case Female = "2"
-    case NotApplicable = "3"
-    case Unknown = "0"
+    case male = "1"
+    case female = "2"
+    case notApplicable = "3"
+    case unknown = "0"
 }
 
 public struct APZCustomer {

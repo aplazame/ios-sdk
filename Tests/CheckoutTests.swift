@@ -11,6 +11,8 @@ import XCTest
 
 class CheckoutTests: XCTestCase {
     
+    fileprivate let basicConfig = APZConfig.createBasicConfig()
+    
     func testOrderCreation_AddArticles() {
         var order = APZOrder.createRandomOrder()
         let fakeURL = URL(string: "http://www.google.com")!
@@ -22,24 +24,24 @@ class CheckoutTests: XCTestCase {
     }
     
     func testCreateCheckout_WithBillingInfo() {
-        var checkout = APZCheckout.create(.createRandomOrder(), config: .createBasicConfig())
+        var checkout = APZCheckout.create(.createRandomOrder())
         checkout.billingInfo = .createRandomAddress()
         
-        XCTAssertNotNil(checkout.record["billing"])
+        XCTAssertNotNil(checkout.record(with: basicConfig)["billing"])
     }
     
     func testCreateCheckout_WithShippingInfo() {
-        var checkout = APZCheckout.create(.createRandomOrder(), config: .createBasicConfig())
+        var checkout = APZCheckout.create(.createRandomOrder())
         checkout.shippingInfo = APZShippingInfo.create("Name", price: 1000, address: .createRandomAddress())
         
-        XCTAssertNotNil(checkout.record["shipping"])
+        XCTAssertNotNil(checkout.record(with: basicConfig)["shipping"])
     }
     
     func testCreateCheckout_WithCustomer() {
-        var checkout = APZCheckout.create(.createRandomOrder(), config: .createBasicConfig())
-        checkout.customer = .create("id", email: "email@mail.com", gender: .Male, type: .New)
+        var checkout = APZCheckout.create(.createRandomOrder())
+        checkout.customer = .create("id", email: "email@mail.com", gender: .male, type: .new)
         
-        XCTAssertNotNil(checkout.record["customer"])
+        XCTAssertNotNil(checkout.record(with: basicConfig)["customer"])
     }
 }
 

@@ -27,7 +27,7 @@ extension APZCheckout {
         let fakeURL = URL(string: "http://www.google.com")!
         order.addArticle(.create("id1", name: "article 1", description: "description", url: fakeURL, imageUrl: fakeURL, price: 1000))
         order.addArticle(.create("id2", name: "article 2", description: "description", url: fakeURL, imageUrl: fakeURL, price: 2000))
-        return .create(order, config: APZConfig(accessToken: "test", environment: .sandbox))
+        return .create(order)
     }
 }
 
