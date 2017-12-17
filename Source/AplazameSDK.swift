@@ -32,7 +32,7 @@ public struct APZPaymentContext {
     
     @discardableResult
     public func requestCheckout(checkout: APZCheckout,
-                                delegate: AplazameCheckoutDelegate,
+                                delegate: APZPaymentContextDelegate,
                                 onReady: @escaping (UIViewController) -> Void) -> UIViewController {
         return AplazameCheckoutViewController.create(with: checkout,
                                                      config: config,
@@ -42,7 +42,7 @@ public struct APZPaymentContext {
     
     public func requestCheckout(from viewController: UIViewController,
                                 checkout: APZCheckout,
-                                delegate: AplazameCheckoutDelegate,
+                                delegate: APZPaymentContextDelegate,
                                 onPresent: @escaping () -> Void) {
         let aplazameVC = AplazameCheckoutViewController.create(with: checkout,
                                                                config: config,

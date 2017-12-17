@@ -87,9 +87,9 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: AplazameCheckoutDelegate {
+extension ViewController: APZPaymentContextDelegate {
     func checkoutDidClose(checkoutVC: UIViewController, with reason: APZCheckoutCloseReason) {
-        print("checkoutDidFinishWithError \(reason.rawValue)")
+        print("checkoutDidCloseWithReason \(reason.rawValue)")
         checkoutVC.dismiss(animated: true, completion: nil)
     }
     

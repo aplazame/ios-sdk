@@ -9,12 +9,12 @@
 import UIKit
 import WebKit
 
-public protocol AplazameCheckoutDelegate: class {
+public protocol APZPaymentContextDelegate: class {
     func checkoutStatusChanged(with status: APZCheckoutStatus)
     func checkoutDidClose(checkoutVC: UIViewController, with reason: APZCheckoutCloseReason)
 }
 
-public extension AplazameCheckoutDelegate {
+public extension APZPaymentContextDelegate {
     func checkoutStatusChanged(with status: APZCheckoutStatus) {}
 }
 
@@ -22,7 +22,7 @@ typealias OnReadyCheckout = (AplazameCheckoutViewController) -> Void
 
 class AplazameCheckoutViewController: UIViewController {
     
-    fileprivate unowned let delegate: AplazameCheckoutDelegate
+    fileprivate unowned let delegate: APZPaymentContextDelegate
     fileprivate let onReady: OnReadyCheckout
     fileprivate let checkout: APZCheckout
     fileprivate let config: APZConfig
@@ -33,7 +33,7 @@ class AplazameCheckoutViewController: UIViewController {
     
     init(checkout: APZCheckout,
          config: APZConfig,
-         delegate: AplazameCheckoutDelegate,
+         delegate: APZPaymentContextDelegate,
          onReady: @escaping OnReadyCheckout) {
         self.checkout = checkout
         self.config = config
