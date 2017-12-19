@@ -15,7 +15,7 @@ extension APZCheckout {
     }
     
     mutating func addRandomCustomer() {
-        customer = .create("140", email: "dev@aplazame.com", gender: .Male, type: .Existing)
+        customer = .create("140", email: "dev@aplazame.com", gender: .male, type: .existing)
     }
     
     mutating func addRandomBillingInfo() {
