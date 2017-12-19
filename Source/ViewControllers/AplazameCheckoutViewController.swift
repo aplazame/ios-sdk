@@ -68,7 +68,7 @@ class AplazameCheckoutViewController: UIViewController {
     }
     
     fileprivate func loadWebView() {
-        let request = URLRequest(url: Router.checkout.url)
+        let request = URLRequest(url: Router.checkout(config).url)
         webView.navigationDelegate = self
         webView.load(request)
     }
@@ -76,8 +76,7 @@ class AplazameCheckoutViewController: UIViewController {
     fileprivate func createPostMessageHandler() -> CheckoutMessagesHandler {
         return CheckoutMessagesHandler(delegate: self,
                                        iFrameCommunicator: self,
-                                       checkout: checkout,
-                                       config: config) { [unowned self] in
+                                       checkout: checkout) { [unowned self] in
             self.dismiss(animated: true, completion: nil)
         }
     }

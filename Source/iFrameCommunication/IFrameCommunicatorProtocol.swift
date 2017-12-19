@@ -10,5 +10,5 @@ import Foundation
 
 
 protocol IFrameCommunicator {
-    func send(checkout: APZCheckout, config: APZConfig)
+    func send(checkout: APZCheckout)
 }

@@ -31,19 +31,19 @@ public enum Enviroment {
 typealias RequestParameters = [String: String]
 
 enum Router {
-    case checkout
+    case checkout(APZConfig)
     case checkAvailability(APZOrder)
     
     var baseURL: URL {
         switch self {
-        case .checkout: return URL(string: "https://aplazame.com")!
+        case .checkout: return URL(string: "https://checkout.aplazame.com")!
         case .checkAvailability: return URL(string: "https://api.aplazame.com")!
         }
     }
     
     var path: String {
         switch self {
-        case .checkout: return "/static/checkout/iframe.html"
+        case .checkout: return "/"
         case .checkAvailability: return "/checkout/button"
         }
     }
@@ -51,16 +51,27 @@ enum Router {
     var url: URL {
         let url = baseURL.appendingPathComponent(path, isDirectory: false)
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-        components.queryItems = [URLQueryItem(name: "timestamp", value: Date().ISO8601GMTString)]
+        let queryItems = params.map { param -> URLQueryItem in
+            let value = param.value.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            return URLQueryItem(name: param.key, value: value)
+        }
+        components.queryItems = queryItems + [URLQueryItem(name: "timestamp", value: Date().ISO8601GMTString)]
         return components.url!
     }
     
     var params: RequestParameters {
         switch self {
-        case .checkout: return [:]
+        case .checkout(let config):
+            return [
+                "public-key": config.accessToken,
+                "sandbox": "\(config.environment.sandboxValue)",
+                "post-message": "\(true)"
+            ]
         case .checkAvailability(let order):
-            return ["amount": "\(order.totalAmount)",
-                    "currency": order.locale.currencyCode ?? ""]
+            return [
+                "amount": "\(order.totalAmount)",
+                "currency": order.locale.currencyCode ?? ""
+            ]
         }
     }
     

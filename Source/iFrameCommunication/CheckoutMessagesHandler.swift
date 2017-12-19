@@ -19,20 +19,17 @@ class CheckoutMessagesHandler: PostMessageHandler {
     let close: () -> Void
     let iFrameCommunicator: IFrameCommunicator
     let checkout: APZCheckout
-    let config: APZConfig
     
     var callbackName: String { return checkoutCallbackName }
     
     init(delegate: CheckoutMessagesHandlerDelegate,
          iFrameCommunicator: IFrameCommunicator,
          checkout: APZCheckout,
-         config: APZConfig,
          close: @escaping () -> Void) {
         self.delegate = delegate
         self.iFrameCommunicator = iFrameCommunicator
         self.close = close
         self.checkout = checkout
-        self.config = config
     }
     
     func handle(receivedMessage message: ScriptMessageType) {
@@ -66,7 +63,7 @@ class CheckoutMessagesHandler: PostMessageHandler {
     
     private func handleCheckoutEvent() {
         dPrint("APZMerchant event received")
-        iFrameCommunicator.send(checkout: checkout, config: config)
+        iFrameCommunicator.send(checkout: checkout)
     }
     
     private func handleStatusChange(_ rawStatus: String?) {

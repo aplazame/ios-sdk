@@ -19,10 +19,10 @@ public struct APZCheckout {
 }
 
 extension APZCheckout {
-    func record(with config: APZConfig) -> APIRecordType {
+    var record: APIRecordType {
         var record = APIRecordType()
         record["order"] = order.record
-        record["merchant"] = merchant.record >< config.record
+        record["merchant"] = merchant.record
         record["customer"] = customer?.record
         record["billing"] = billingInfo?.record
         record["shipping"] = shippingInfo?.record
