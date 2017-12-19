@@ -11,9 +11,10 @@ import AplazameSDK
 
 final class ViewController: UIViewController {
     
-    fileprivate var checkout: Checkout? {
+    fileprivate lazy var checkout: APZCheckout = createCheckout()
+    fileprivate var paymentContext: APZPaymentContext? {
         didSet {
-            checkoutButton.set(enabled: checkout != nil)
+            checkoutButton.set(enabled: paymentContext != nil)
         }
     }
     
@@ -31,39 +32,39 @@ final class ViewController: UIViewController {
     @IBOutlet weak var accessTokenTextField: UITextField!
     @IBAction func openCheckout(_ sender: AnyObject) {
         loadingView.isHidden = false
-        guard let checkout = checkout else { return }
-        AplazameSDK.requestPresent(from: navigationController!,
-                                   checkout: checkout,
-                                   delegate: self,
-                                   onPresent: {
+        paymentContext?.requestCheckout(checkout: checkout, delegate: self, onReady: { vc in
             self.loadingView.isHidden = true
+            vc.title = "Aplazame"
+            self.navigationController?.pushViewController(vc, animated: true)
         })
     }
     
     @IBAction func checkAvailability(_ sender: AnyObject) {
         guard let token = accessTokenTextField.text else { return }
-        let newCheckout = createCheckout(with: token)
-        AplazameSDK.checkAvailability(checkout: newCheckout) { [weak self] (status) in
+        checkoutButton.set(enabled: false)
+        paymentContext = APZPaymentContext(config: APZConfig(accessToken: token, environment: .sandbox))
+        paymentContext?.checkAvailability(order: checkout.order, callback: { [weak self] (status) in
             switch status {
             case .available:
-                self?.checkout = newCheckout
+                self?.checkoutButton.set(enabled: true)
             case .notAvailable, .undefined:
                 self?.presentAlert(title: "Disponibilidad",
                                    message: "Aplazame no está disponible")
             }
-        }
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Checkout"
         navigationItem.applyLogo()
         navigationController?.applyStyle()
         
         AplazameSDK.debugMode = true
     }
     
-    fileprivate lazy var order: Order = {
-        var order = Order.create(.randomID,
+    fileprivate lazy var order: APZOrder = {
+        var order = APZOrder.create(.randomID,
                                  locale: .current,
                                  taxRate: 20,
                                  totalAmount: 2000,
@@ -72,9 +73,8 @@ final class ViewController: UIViewController {
         return order
     }()
     
-    fileprivate func createCheckout(with token: String) -> Checkout {
-        let config = Config(accessToken: token, environment: .sandbox)
-        var checkout = Checkout.create(order, config: config)
+    fileprivate func createCheckout() -> APZCheckout {
+        var checkout = APZCheckout.create(order)
         checkout.addRandomShippingInfo()
         checkout.addRandomCustomer()
         checkout.addRandomBillingInfo()
@@ -83,17 +83,18 @@ final class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? OrderTableViewController else { return }
-        destination.checkout = createCheckout(with: "")
+        destination.checkout = checkout
     }
 }
 
-extension ViewController: AplazameCheckoutDelegate {
-    func checkoutStatusChanged(with status: CheckoutStatus) {
-        print("checkoutStatusChanged \(status.rawValue)")
+extension ViewController: APZPaymentContextDelegate {
+    func checkoutDidClose(checkoutVC: UIViewController, with reason: APZCheckoutCloseReason) {
+        print("checkoutDidCloseWithReason \(reason.rawValue)")
+        checkoutVC.dismiss(animated: true, completion: nil)
     }
     
-    func checkoutFinished(with reason: CheckoutCloseReason) {
-        print("checkoutDidFinishWithError \(reason.rawValue)")
+    func checkoutStatusChanged(with status: APZCheckoutStatus) {
+        print("checkoutStatusChanged \(status.rawValue)")
     }
 }
 

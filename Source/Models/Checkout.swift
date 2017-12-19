@@ -1,5 +1,5 @@
 //
-//  Checkout.swift
+//  APZCheckout.swift
 //  Aplazame-sdk
 //
 //  Created by Andres Brun Moreno on 05/05/16.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-public struct Checkout {
-    public let order: Order
-    let merchant: Merchant
+public struct APZCheckout {
+    public let order: APZOrder
+    let merchant: APZMerchant
     let meta = Meta()
-    public var customer: Customer? = nil
+    public var customer: APZCustomer? = nil
     public var billingInfo: BillingInfo? = nil
-    public var shippingInfo: ShippingInfo? = nil
+    public var shippingInfo: APZShippingInfo? = nil
     public var additionalInfo: [String: String]? = nil
 }
 
-extension Checkout {
+extension APZCheckout {
     var record: APIRecordType {
         var record = APIRecordType()
         record["order"] = order.record
@@ -33,8 +33,13 @@ extension Checkout {
     }
 }
 
-public extension Checkout {
-    public static func create(_ order: Order, config: Config) -> Checkout {
-        return Checkout(order: order, merchant: .create(config), customer: nil, billingInfo: nil, shippingInfo: nil, additionalInfo: nil)
+public extension APZCheckout {
+    public static func create(_ order: APZOrder) -> APZCheckout {
+        return APZCheckout(order: order,
+                        merchant: .create(),
+                        customer: nil,
+                        billingInfo: nil,
+                        shippingInfo: nil,
+                        additionalInfo: nil)
     }
 }

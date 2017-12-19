@@ -10,21 +10,21 @@ import Foundation
 
 protocol CheckoutMessagesHandlerDelegate: class {
     func checkoutReady()
-    func checkoutStatusChanged(with status: CheckoutStatus)
-    func checkoutFinished(with reason: CheckoutCloseReason)
+    func checkoutStatusChanged(with status: APZCheckoutStatus)
+    func checkoutDidClose(with reason: APZCheckoutCloseReason)
 }
 
 class CheckoutMessagesHandler: PostMessageHandler {
     unowned let delegate: CheckoutMessagesHandlerDelegate
     let close: () -> Void
     let iFrameCommunicator: IFrameCommunicator
-    let checkout: Checkout
+    let checkout: APZCheckout
     
     var callbackName: String { return checkoutCallbackName }
     
     init(delegate: CheckoutMessagesHandlerDelegate,
          iFrameCommunicator: IFrameCommunicator,
-         checkout: Checkout,
+         checkout: APZCheckout,
          close: @escaping () -> Void) {
         self.delegate = delegate
         self.iFrameCommunicator = iFrameCommunicator
@@ -62,13 +62,13 @@ class CheckoutMessagesHandler: PostMessageHandler {
     }
     
     private func handleCheckoutEvent() {
-        dPrint("Merchant event received")
+        dPrint("APZMerchant event received")
         iFrameCommunicator.send(checkout: checkout)
     }
     
     private func handleStatusChange(_ rawStatus: String?) {
         guard let rawStatus = rawStatus,
-            let status = CheckoutStatus(rawValue: rawStatus)
+            let status = APZCheckoutStatus(rawValue: rawStatus)
             else {
             dPrint("Status change should come with a valid a reason")
             return
@@ -82,11 +82,11 @@ class CheckoutMessagesHandler: PostMessageHandler {
             dPrint("Result should contains the reason why iFrame is being closing")
             return
         }
-        let closeReason = CheckoutCloseReason(rawValue: result)
+        let closeReason = APZCheckoutCloseReason(rawValue: result)
         dPrint("Close event received \(String(describing: closeReason))")
         
         if let closeReason = closeReason {
-            delegate.checkoutFinished(with: closeReason)
+            delegate.checkoutDidClose(with: closeReason)
         } else {
             dPrint("Unhandled close reason \(result)")
         }

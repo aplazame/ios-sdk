@@ -1,5 +1,5 @@
 //
-//  Order.swift
+//  APZOrder.swift
 //  Aplazame-sdk
 //
 //  Created by Andres Brun Moreno on 05/05/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Order {
+public struct APZOrder {
     /**
      Your order ID.
      */
@@ -16,7 +16,7 @@ public struct Order {
     /**
      Articles in cart.
      */
-    public var articles: [Article]
+    public var articles: [APZArticle]
     /**
      The discount amount of the order.
      */
@@ -38,22 +38,22 @@ public struct Order {
      */
     public let locale: Locale
     /**
-     Order tax rate.
+     APZOrder tax rate.
      */
     public let taxRate: Decimal
     /**
-     Order total amount.
+     APZOrder total amount.
      */
     public let totalAmount: Decimal
 }
 
-public extension Order {
-    mutating func addArticle(_ article: Article) {
+public extension APZOrder {
+    mutating func addArticle(_ article: APZArticle) {
         articles.append(article)
     }
 }
 
-public extension Order {
+public extension APZOrder {
     static func create(
         _ id: String,
         locale: Locale,
@@ -62,13 +62,13 @@ public extension Order {
         discount: Int? = nil,
         discountRate: Int? = nil,
         cartDiscount: Int? = nil,
-        cartDiscountRate: Int? = nil) -> Order
+        cartDiscountRate: Int? = nil) -> APZOrder
     {
-        return Order(id: id, articles: [], discount: discount, discountRate: discountRate, cartDiscount: cartDiscount, cartDiscountRate: cartDiscountRate, locale: locale, taxRate: taxRate, totalAmount: totalAmount)
+        return APZOrder(id: id, articles: [], discount: discount, discountRate: discountRate, cartDiscount: cartDiscount, cartDiscountRate: cartDiscountRate, locale: locale, taxRate: taxRate, totalAmount: totalAmount)
     }
 }
 
-extension Order {
+extension APZOrder {
     var record: APIRecordType {
         var record = APIRecordType()
         record["id"] = id

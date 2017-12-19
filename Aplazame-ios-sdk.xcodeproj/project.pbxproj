@@ -180,7 +180,6 @@
 				8B31657A1CE8BCEA00815460 /* Factories */,
 				DDE1B55C1CDDD4AD000B21DB /* Network */,
 				DDE1B5591CDD014A000B21DB /* Extensions */,
-				DDE1B5581CDCFF81000B21DB /* Views */,
 				DD6601A01CDBB71D00C6E600 /* Models */,
 				DD66019B1CDBAF3900C6E600 /* ViewControllers */,
 				DD6601841CDBA2ED00C6E600 /* Aplazame-ios-sdk-private.h */,
@@ -233,13 +232,6 @@
 				DDB4ABDE1DBEB0830019FB2D /* loading.html */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		DDE1B5581CDCFF81000B21DB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		DDE1B5591CDD014A000B21DB /* Extensions */ = {

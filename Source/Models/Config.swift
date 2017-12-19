@@ -1,5 +1,5 @@
 //
-//  Config.swift
+//  APZConfig.swift
 //  Aplazame-sdk
 //
 //  Created by Andres Brun Moreno on 06/05/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Config {
+public struct APZConfig {
     let accessToken: String
     let environment: Enviroment
     
@@ -18,7 +18,7 @@ public struct Config {
     }    
 }
 
-extension Config {
+extension APZConfig {
     var record: APIRecordType {
         var record = APIRecordType()
         record["public_api_key"] = accessToken

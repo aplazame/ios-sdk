@@ -36,9 +36,16 @@ pod 'Aplazame-iOS-SDK'
 Then run `pod install` with CocoaPods 1.0 or newer.
 
 ### How to use ###
-First at all you need to check if Aplazame is available for your checkout. The best way to do it is to call:
+First at all you need to create an instance of `APZPaymentContext` with the `APZConfig` object:
 ```swift
-AplazameSDK.checkAvailability(checkout: checkout) { [weak self] (status) in
+let config = APZConfig(accessToken: token, environment: .sandbox)
+
+let paymentContext = APZPaymentContext(config: APZConfig(accessToken: "your-token-here", environment: .sandbox | .production))
+```
+
+Then you can check if Aplazame is available for your order. The best way to do it is to call:
+```swift
+paymentContext.checkAvailability(checkout: checkout.order) { (status) in
   switch status {
     case .available:
       // Enable checkout button for instance
@@ -48,28 +55,32 @@ AplazameSDK.checkAvailability(checkout: checkout) { [weak self] (status) in
   }
 ```
 
-After this check you need to request the checkout presentation. `AplazameSDK` needs 4 objects ito do this:
-- `viewController`: where it will be presented from.
+After this check you need to request the checkout presentation. `AplazameSDK` needs 3 objects ito do this:
 - `checkout`: it is the object where all information regarding with checkout is.
 - `delegate`: class that will receive payment flow callbacks.
-- `onPresent`: will be called when the checkout has been presented.
+- `onReady`: will be called when the checkout is ready to be presented.
 
 ```swift
 // Start activity indicator
-AplazameSDK.requestPresent(from: navigationController!, checkout: checkout, delegate: self, onPresent: {
+paymentContext.requestCheckout(checkout: checkout, delegate: self, onReady: { vc in
   // Stop activity indicator
-  })
+  self.navigationController?.pushViewController(vc, animated: true)
+})
 ```
-
+or the SDK provides a helper method with a default presentation:
+```swift
+// Start activity indicator
+paymentContext.requestCheckout(from: self, checkout: checkout, delegate: self, onPresent: {
+     // Stop activity indicator       
+})
+```
 The minimun information checkout object has to contain in order to work is: 
-- `config`: object that stores access token and environment (.Sanbox or .Production)
 - `order`: the object that store all information related with the order. It has to contain, at least:
   - `shippingInfo`
   - `costumer`
 
 ```swift
-let config = Config(accessToken: "your access token", environment: .Sandbox)
-let checkout = Checkout.create(order, config: config)
+let checkout = Checkout.create(order)
 ```
 
 To create this `order` object use the following code:
@@ -84,7 +95,7 @@ To add `shippingInfo` and `costumer` to the order:
 let address = Address.create("Fernando", lastName: "Cabello", street: "Torre Picasso, Plaza Pablo Ruiz Picasso 1", city: "Madrid", state: "Madrid", countryLocale: .current, postcode: "28020")
 checkout.shippingInfo = .create("Fernando", price: 500, address: address)
 
-checkout.customer = .create("140", email: "dev@aplazame.com", gender: .Male, type: .Existing)
+checkout.customer = .create("140", email: "dev@aplazame.com", gender: .male, type: .existing)
 ```
 Order also contains other field as:
 - `articles`
@@ -94,16 +105,17 @@ Order also contains other field as:
 
 Check the [demo project](https://github.com/aplazame/ios-sdk/Aplazame-ios-sdk-demo) to see an example of their use.
 
-Next, you will need an object that conform to `AplazameCheckoutDelegate` protocol. this object will receive following calls:
+Next, you will need an object that conform to `APZPaymentContextDelegate` protocol. This object will receive the following calls:
 
 ```swift
-extension ViewController: AplazameCheckoutDelegate {
-  func checkoutStatusChanged(with status: CheckoutStatus) {
-    print("checkoutStatusChanged \(status.rawValue)")
+extension ViewController: APZPaymentContextDelegate {
+  func checkoutDidClose(checkoutVC: UIViewController, with reason: APZCheckoutCloseReason) {
+    print("checkoutDidCloseWithReason \(reason.rawValue)")
+    checkoutVC.dismiss(animated: true, completion: nil)
   }
     
-  func checkoutFinished(with reason: CheckoutCloseReason) {
-    print("checkoutDidFinishWithError \(reason.rawValue)")
+  func checkoutStatusChanged(with status: APZCheckoutStatus) {
+    print("checkoutStatusChanged \(status.rawValue)")
   }
 }
 ```
