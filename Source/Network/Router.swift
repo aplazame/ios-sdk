@@ -32,7 +32,7 @@ typealias RequestParameters = [String: String]
 
 enum Router {
     case checkout(APZConfig)
-    case checkAvailability(APZOrder)
+    case checkAvailability(Int, String)
     
     var baseURL: URL {
         switch self {
@@ -67,10 +67,10 @@ enum Router {
                 "sandbox": "\(config.environment.sandboxValue)",
                 "post-message": "\(true)"
             ]
-        case .checkAvailability(let order):
+        case .checkAvailability(let amount, let currency):
             return [
-                "amount": "\(order.totalAmount)",
-                "currency": order.locale.currencyCode ?? ""
+                "amount": "\(amount)",
+                "currency": currency,
             ]
         }
     }

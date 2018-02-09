@@ -45,7 +45,7 @@ let paymentContext = APZPaymentContext(config: APZConfig(accessToken: "your-toke
 
 Then you can check if Aplazame is available for your order. The best way to do it is to call:
 ```swift
-paymentContext.checkAvailability(checkout: checkout.order) { (status) in
+paymentContext.checkAvailability(amount: 12050, currency: "EUR") { (status) in
   switch status {
     case .available:
       // Enable checkout button for instance
