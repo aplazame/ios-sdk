@@ -58,9 +58,10 @@ public struct APZPaymentContext {
         aplazameVC.modalPresentationCapturesStatusBarAppearance = true
     }
     
-    public func checkAvailability(order: APZOrder,
+    public func checkAvailability(amount: Int,
+                                  currency: String,
                                   callback: @escaping (AplazameAvailabilityStatus) -> Void) {
-        apiManager.request(route: .checkAvailability(order),
+        apiManager.request(route: .checkAvailability(amount, currency),
                            token: config.accessToken) { (result) in
                             switch result {
                             case .success(let code, _):
