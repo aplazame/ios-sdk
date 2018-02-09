@@ -103,7 +103,7 @@ Order also contains other field as:
 - `discountRate`
 - `cartDiscount`
 
-Check the [demo project](https://github.com/aplazame/ios-sdk/Aplazame-ios-sdk-demo) to see an example of their use.
+Check the [demo project](/Aplazame-ios-sdk-demo) to see an example of their use.
 
 Next, you will need an object that conform to `APZPaymentContextDelegate` protocol. This object will receive the following calls:
 
