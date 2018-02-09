@@ -1,11 +1,3 @@
-//
-//  APIManager.swift
-//  Aplazame iOS SDK
-//
-//  Created by Andres Brun Moreno on 06/12/2017.
-//  Copyright © 2017 Andres Brun Moreno. All rights reserved.
-//
-
 import Foundation
 
 enum APIManagerResult {
