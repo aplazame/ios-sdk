@@ -1,11 +1,3 @@
-//
-//  WebViewLoadingView.swift
-//  Aplazame-sdk
-//
-//  Created by Andres Brun Moreno on 30/09/2016.
-//  Copyright © 2016 Andres Brun Moreno. All rights reserved.
-//
-
 import WebKit
 
 final class WebViewLoadingView: WKWebView {

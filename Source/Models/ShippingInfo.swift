@@ -1,11 +1,3 @@
-//
-//  APZShippingInfo.swift
-//  Aplazame-sdk
-//
-//  Created by Andres Brun on 14/05/16.
-//  Copyright © 2016 Andres Brun Moreno. All rights reserved.
-//
-
 import Foundation
 
 public struct APZShippingInfo {

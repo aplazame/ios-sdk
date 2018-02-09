@@ -1,11 +1,3 @@
-//
-//  AplazameSDK.swift
-//  Aplazame-sdk
-//
-//  Created by Andres Brun Moreno on 11/09/16.
-//  Copyright © 2016 Andres Brun Moreno. All rights reserved.
-//
-
 import UIKit
 
 public enum AplazameAvailabilityStatus {
