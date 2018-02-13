@@ -1,11 +1,3 @@
-//
-//  CheckoutTests.swift
-//  Aplazame-sdk
-//
-//  Created by Andres Brun on 15/05/16.
-//  Copyright © 2016 Andres Brun Moreno. All rights reserved.
-//
-
 import XCTest
 @testable import AplazameSDK
 

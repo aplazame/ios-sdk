@@ -1,11 +1,3 @@
-//
-//  Aplazame_ios_sdk_privateTests.swift
-//  Aplazame-sdkTests
-//
-//  Created by Andres Brun Moreno on 05/05/16.
-//  Copyright © 2016 Andres Brun Moreno. All rights reserved.
-//
-
 import XCTest
 @testable import AplazameSDK
 

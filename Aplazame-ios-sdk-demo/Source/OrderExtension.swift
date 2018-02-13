@@ -1,11 +1,3 @@
-//
-//  OrderExtension.swift
-//  Aplazame-ios-sdk-demo
-//
-//  Created by Andres Brun Moreno on 10/07/16.
-//  Copyright © 2016 Andres Brun Moreno. All rights reserved.
-//
-
 import AplazameSDK
 import Foundation
 
