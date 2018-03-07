@@ -1,6 +1,6 @@
 import Foundation
 
-struct APZMerchant {
+public struct APZMerchant {
     /**
      url that the JS client sent to confirming the order.
      */

@@ -2,8 +2,8 @@ import Foundation
 
 public struct APZCheckout {
     public let order: APZOrder
-    let merchant: APZMerchant
-    let meta = Meta()
+    public let merchant: APZMerchant
+    public let meta: Meta = Meta()
     public var customer: APZCustomer? = nil
     public var billingInfo: BillingInfo? = nil
     public var shippingInfo: APZShippingInfo? = nil

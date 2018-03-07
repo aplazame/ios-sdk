@@ -1,6 +1,6 @@
 import Foundation
 
-struct Meta {
+public struct Meta {
     var record: APIRecordType {
         return [
             "platform": ["name": "ios"],
