@@ -568,7 +568,7 @@
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.brunosSofware.Aplazame-ios-sdk-private";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aplazame.ios-sdk";
 				PRODUCT_NAME = AplazameSDK;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -588,7 +588,7 @@
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.brunosSofware.Aplazame-ios-sdk-private";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aplazame.ios-sdk";
 				PRODUCT_NAME = AplazameSDK;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
