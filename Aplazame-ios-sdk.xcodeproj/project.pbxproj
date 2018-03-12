@@ -22,15 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		8B1B2C061CF618B0006BED12 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B2C051CF618B0006BED12 /* Meta.swift */; };
 		8B31657C1CE8BD0000815460 /* AplazameCheckoutViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B31657B1CE8BD0000815460 /* AplazameCheckoutViewControllerFactory.swift */; };
-		8B31657E1CE8D0A600815460 /* CheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B31657D1CE8D0A600815460 /* CheckoutTests.swift */; };
-		8B4B286D1CE7806F00C7CD48 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B286C1CE7806F00C7CD48 /* Customer.swift */; };
-		8B4B286F1CE7854F00C7CD48 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B286E1CE7854F00C7CD48 /* Address.swift */; };
 		8B4B28711CE7866300C7CD48 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B28701CE7866300C7CD48 /* NSDateExtension.swift */; };
-		8B4B28751CE78C3D00C7CD48 /* ShippingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B28741CE78C3D00C7CD48 /* ShippingInfo.swift */; };
 		8B4B28771CE78D0400C7CD48 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B28761CE78D0400C7CD48 /* DictionaryExtension.swift */; };
-		8B4B28791CE7938400C7CD48 /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B28781CE7938400C7CD48 /* Merchant.swift */; };
 		DD1B25161D04067A00ED8369 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1B25151D04067A00ED8369 /* Statics.swift */; };
 		DD3439E71D0411E300D0486A /* iFrameCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3439E61D0411E300D0486A /* iFrameCommunication.swift */; };
 		DD3439E91D0411FD00D0486A /* IFrameCommunicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3439E81D0411FD00D0486A /* IFrameCommunicatorProtocol.swift */; };
@@ -44,9 +38,6 @@
 		DD6601911CDBA2ED00C6E600 /* Aplazame_ios_sdk_privateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6601901CDBA2ED00C6E600 /* Aplazame_ios_sdk_privateTests.swift */; };
 		DD66019D1CDBAF4B00C6E600 /* AplazameCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66019C1CDBAF4B00C6E600 /* AplazameCheckoutViewController.swift */; };
 		DD66019F1CDBB6C900C6E600 /* WebViewContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66019E1CDBB6C900C6E600 /* WebViewContainerView.swift */; };
-		DD6601A21CDBB73E00C6E600 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6601A11CDBB73E00C6E600 /* Checkout.swift */; };
-		DD6601A41CDBB75400C6E600 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6601A31CDBB75400C6E600 /* Article.swift */; };
-		DD6601A61CDBF4F100C6E600 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6601A51CDBF4F100C6E600 /* Order.swift */; };
 		DD6601AA1CDC73AE00C6E600 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6601A91CDC73AE00C6E600 /* Config.swift */; };
 		DDA111911D9E3E1400B63741 /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA111901D9E3E1400B63741 /* WKWebViewExtension.swift */; };
 		DDC467511D8554F6007AD3B9 /* AplazameSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC467501D8554F6007AD3B9 /* AplazameSDK.swift */; };
@@ -77,15 +68,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8B1B2C051CF618B0006BED12 /* Meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 		8B31657B1CE8BD0000815460 /* AplazameCheckoutViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AplazameCheckoutViewControllerFactory.swift; sourceTree = "<group>"; };
-		8B31657D1CE8D0A600815460 /* CheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTests.swift; sourceTree = "<group>"; };
-		8B4B286C1CE7806F00C7CD48 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
-		8B4B286E1CE7854F00C7CD48 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		8B4B28701CE7866300C7CD48 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
-		8B4B28741CE78C3D00C7CD48 /* ShippingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingInfo.swift; sourceTree = "<group>"; };
 		8B4B28761CE78D0400C7CD48 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
-		8B4B28781CE7938400C7CD48 /* Merchant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
 		DD1B25151D04067A00ED8369 /* Statics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
 		DD3439E61D0411E300D0486A /* iFrameCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iFrameCommunication.swift; sourceTree = "<group>"; };
 		DD3439E81D0411FD00D0486A /* IFrameCommunicatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IFrameCommunicatorProtocol.swift; sourceTree = "<group>"; };
@@ -102,9 +87,6 @@
 		DD6601921CDBA2ED00C6E600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD66019C1CDBAF4B00C6E600 /* AplazameCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AplazameCheckoutViewController.swift; sourceTree = "<group>"; };
 		DD66019E1CDBB6C900C6E600 /* WebViewContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewContainerView.swift; sourceTree = "<group>"; };
-		DD6601A11CDBB73E00C6E600 /* Checkout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
-		DD6601A31CDBB75400C6E600 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		DD6601A51CDBF4F100C6E600 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		DD6601A91CDC73AE00C6E600 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		DDA111901D9E3E1400B63741 /* WKWebViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewExtension.swift; sourceTree = "<group>"; };
 		DDA111921D9E3F7600B63741 /* WebViewLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewLoadingView.swift; sourceTree = "<group>"; };
@@ -193,7 +175,6 @@
 			children = (
 				DD3439F01D04450400D0486A /* UnitTestHelper.swift */,
 				DD6601901CDBA2ED00C6E600 /* Aplazame_ios_sdk_privateTests.swift */,
-				8B31657D1CE8D0A600815460 /* CheckoutTests.swift */,
 				DD6601921CDBA2ED00C6E600 /* Info.plist */,
 				DD3439EE1D0443FF00D0486A /* WebViewContainerViewTests.swift */,
 			);
@@ -213,15 +194,7 @@
 		DD6601A01CDBB71D00C6E600 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DD6601A11CDBB73E00C6E600 /* Checkout.swift */,
-				DD6601A51CDBF4F100C6E600 /* Order.swift */,
-				DD6601A31CDBB75400C6E600 /* Article.swift */,
 				DD6601A91CDC73AE00C6E600 /* Config.swift */,
-				8B4B286C1CE7806F00C7CD48 /* Customer.swift */,
-				8B4B286E1CE7854F00C7CD48 /* Address.swift */,
-				8B4B28741CE78C3D00C7CD48 /* ShippingInfo.swift */,
-				8B4B28781CE7938400C7CD48 /* Merchant.swift */,
-				8B1B2C051CF618B0006BED12 /* Meta.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,25 +359,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDC467511D8554F6007AD3B9 /* AplazameSDK.swift in Sources */,
-				8B4B28751CE78C3D00C7CD48 /* ShippingInfo.swift in Sources */,
 				DDA111911D9E3E1400B63741 /* WKWebViewExtension.swift in Sources */,
 				DD3439ED1D04423700D0486A /* CheckoutMessagesHandler.swift in Sources */,
-				DD6601A41CDBB75400C6E600 /* Article.swift in Sources */,
 				DDE1B5641CDDDD31000B21DB /* Router.swift in Sources */,
 				DD3439E91D0411FD00D0486A /* IFrameCommunicatorProtocol.swift in Sources */,
-				DD6601A21CDBB73E00C6E600 /* Checkout.swift in Sources */,
-				8B4B286F1CE7854F00C7CD48 /* Address.swift in Sources */,
 				DD3439EB1D04121200D0486A /* PostMessageHandlerProtocol.swift in Sources */,
 				DD3439E71D0411E300D0486A /* iFrameCommunication.swift in Sources */,
-				DD6601A61CDBF4F100C6E600 /* Order.swift in Sources */,
 				DDE1B5621CDDD508000B21DB /* ViewExtension.swift in Sources */,
-				8B1B2C061CF618B0006BED12 /* Meta.swift in Sources */,
 				DD66019F1CDBB6C900C6E600 /* WebViewContainerView.swift in Sources */,
 				8B31657C1CE8BD0000815460 /* AplazameCheckoutViewControllerFactory.swift in Sources */,
 				DD1B25161D04067A00ED8369 /* Statics.swift in Sources */,
-				8B4B286D1CE7806F00C7CD48 /* Customer.swift in Sources */,
 				DD66019D1CDBAF4B00C6E600 /* AplazameCheckoutViewController.swift in Sources */,
-				8B4B28791CE7938400C7CD48 /* Merchant.swift in Sources */,
 				8B4B28711CE7866300C7CD48 /* NSDateExtension.swift in Sources */,
 				DD447D911FD7F6E500001B52 /* APIManager.swift in Sources */,
 				8B4B28771CE78D0400C7CD48 /* DictionaryExtension.swift in Sources */,
@@ -418,7 +383,6 @@
 			files = (
 				DD3439EF1D0443FF00D0486A /* WebViewContainerViewTests.swift in Sources */,
 				DD6601911CDBA2ED00C6E600 /* Aplazame_ios_sdk_privateTests.swift in Sources */,
-				8B31657E1CE8D0A600815460 /* CheckoutTests.swift in Sources */,
 				DD3439F11D04450400D0486A /* UnitTestHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

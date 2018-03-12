@@ -2,9 +2,9 @@ import UIKit
 import AplazameSDK
 
 class OrderTableViewController: UITableViewController {
-    var checkout: APZCheckout! {
+    var checkout: [String: Any]! {
         didSet {
-            cellsData = checkout.createCellsData()
+            cellsData = CheckoutTools.createCellsData(checkout: checkout)
         }
     }
     
@@ -28,7 +28,7 @@ extension OrderTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let locale = checkout.order.locale
+        let locale = Locale.current
         
         switch cellsData[(indexPath as NSIndexPath).section] {
         case .articleType(let articles):
@@ -37,7 +37,7 @@ extension OrderTableViewController {
             return cell
         case .shippingType(let shippingInfo):
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuoteDetailCell") as! QuoteDetailCell
-            cell.configure(with: "Shipping", priceInCents: shippingInfo.price, locale: locale)
+            cell.configure(with: "Shipping", priceInCents: shippingInfo["price"] as! Int, locale: locale)
             return cell
         case .discountType(let discount):
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuoteDetailCell") as! QuoteDetailCell
@@ -52,8 +52,8 @@ extension OrderTableViewController {
 }
 
 enum CellDataType {
-    case articleType([APZArticle])
-    case shippingType(APZShippingInfo)
+    case articleType([[String: Any]])
+    case shippingType([String: Any])
     case discountType(Int)
     case totalType(Int)
     
@@ -65,20 +65,22 @@ enum CellDataType {
     }
 }
 
-private extension APZCheckout {
-    func createCellsData() -> [CellDataType] {
+private class CheckoutTools {
+    static func createCellsData(checkout: [String: Any]) -> [CellDataType] {
         var cellsData = [CellDataType]()
         
-        cellsData.append(.articleType(order.articles))
-        if let discount = order.discount {
-            cellsData.append(.discountType(discount))
+        let order: [String: Any] = checkout["order"] as! [String : Any]
+
+        cellsData.append(.articleType(order["articles"] as! [[String : Any]]))
+        if let discount = order["discount"] {
+            cellsData.append(.discountType(discount as! Int))
         }
         
-        if let shippingInfo = shippingInfo {
+        if let shippingInfo: [String: Any] = checkout["shipping_info"] as? [String : Any] {
             cellsData.append(.shippingType(shippingInfo))
         }
         
-        cellsData.append(.totalType(order.totalAmount))
+        cellsData.append(.totalType(order["total_amount"] as! Int))
         
         return cellsData
     }

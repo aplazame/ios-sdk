@@ -1,5 +1,4 @@
 import UIKit
-import AplazameSDK
 
 class ArticleCell: UITableViewCell {
     
@@ -11,10 +10,10 @@ class ArticleCell: UITableViewCell {
 }
 
 extension ArticleCell {
-    func configure(with article: APZArticle, locale: Locale) {
-        articleImage.load(ImageURL: article.imageUrl)
-        articleName.text = article.name
-        articleAmount.text = "\(article.quantity) x"
-        articleUnitPrice.text = String.formatted(price: article.price, locale: locale)
+    func configure(with article: [String: Any], locale: Locale) {
+        articleImage.load(ImageURL: URL(string: article["image_url"] as! String)!)
+        articleName.text = article["name"] as? String
+        articleAmount.text = "\(article["quantity"] ?? 1) x"
+        articleUnitPrice.text = String.formatted(price: article["price"] as! Int, locale: locale)
     }
 }

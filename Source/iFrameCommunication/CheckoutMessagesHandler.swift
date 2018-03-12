@@ -10,13 +10,13 @@ class CheckoutMessagesHandler: PostMessageHandler {
     unowned let delegate: CheckoutMessagesHandlerDelegate
     let close: () -> Void
     let iFrameCommunicator: IFrameCommunicator
-    let checkout: APZCheckout
+    let checkout: [String: Any]
     
     var callbackName: String { return checkoutCallbackName }
     
     init(delegate: CheckoutMessagesHandlerDelegate,
          iFrameCommunicator: IFrameCommunicator,
-         checkout: APZCheckout,
+         checkout: [String: Any],
          close: @escaping () -> Void) {
         self.delegate = delegate
         self.iFrameCommunicator = iFrameCommunicator

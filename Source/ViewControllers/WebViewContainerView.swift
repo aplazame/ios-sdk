@@ -32,7 +32,7 @@ extension WebViewContainerView: WKScriptMessageHandler {
 }
 
 extension WKScriptMessage: ScriptMessageType {
-    var bodyRecord: APIRecordType? {
-        return body as? APIRecordType
+    var bodyRecord: [String: Any]? {
+        return body as? [String: Any]
     }
 }
