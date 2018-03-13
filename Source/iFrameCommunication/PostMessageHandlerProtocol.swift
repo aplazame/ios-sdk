@@ -7,6 +7,6 @@ protocol PostMessageHandler {
 }
 
 protocol ScriptMessageType: class {
-    var bodyRecord: APIRecordType? { get }
+    var bodyRecord: [String: Any]? { get }
     var name: String { get }
 }

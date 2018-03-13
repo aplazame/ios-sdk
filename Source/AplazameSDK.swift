@@ -7,7 +7,6 @@ public enum AplazameAvailabilityStatus {
 }
 
 public struct AplazameSDK {
-    public static var version = 1.0
     public static var debugMode = false
 }
 
@@ -23,7 +22,7 @@ public struct APZPaymentContext {
     }
     
     @discardableResult
-    public func requestCheckout(checkout: APZCheckout,
+    public func requestCheckout(checkout: [String: Any],
                                 delegate: APZPaymentContextDelegate,
                                 onReady: @escaping (UIViewController) -> Void) -> UIViewController {
         return AplazameCheckoutViewController.create(with: checkout,
@@ -33,7 +32,7 @@ public struct APZPaymentContext {
     }
     
     public func requestCheckout(from viewController: UIViewController,
-                                checkout: APZCheckout,
+                                checkout: [String: Any],
                                 delegate: APZPaymentContextDelegate,
                                 onPresent: @escaping () -> Void) {
         let aplazameVC = AplazameCheckoutViewController.create(with: checkout,
@@ -53,7 +52,7 @@ public struct APZPaymentContext {
     public func checkAvailability(amount: Int,
                                   currency: String,
                                   callback: @escaping (AplazameAvailabilityStatus) -> Void) {
-        apiManager.request(route: .checkAvailability(amount, currency),
+        apiManager.request(route: .checkAvailability(config, amount, currency),
                            token: config.accessToken) { (result) in
                             switch result {
                             case .success(let code, _):

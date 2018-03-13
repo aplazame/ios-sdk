@@ -31,8 +31,8 @@ public enum APZCheckoutStatus: String {
 }
 
 extension AplazameCheckoutViewController: IFrameCommunicator {
-    func send(checkout: APZCheckout) {
-        let allInfoJSON = try! JSONSerialization.data(withJSONObject: checkout.record, options: JSONSerialization.WritingOptions(rawValue: 0))
+    func send(checkout: [String: Any]) {
+        let allInfoJSON = try! JSONSerialization.data(withJSONObject: checkout, options: JSONSerialization.WritingOptions(rawValue: 0))
         let allInfoJSONString = NSString(data: allInfoJSON, encoding: String.Encoding.utf8.rawValue)!.replacingOccurrences(of: "'", with: "\'")
         
         let exec = "window.postMessage({aplazame: 'checkout', event: 'checkout-data', data: \(allInfoJSONString)}, '*');"

@@ -14,8 +14,7 @@ class WebViewContainerViewTests: XCTestCase {
     fileprivate lazy var checkoutMessageHandler: CheckoutMessagesHandler = {
         return CheckoutMessagesHandler(delegate: delegate,
                                        iFrameCommunicator: iFrameCommunicator,
-                                       checkout: .createRandomCheckout(),
-                                       config: basicConfig) { }
+                                       checkout: CustomCheckout.createRandomCheckout()) { }
     }()
     
     func testMessageHandlerReceiveMerchantEvent_ShouldRequireCheckout() {
@@ -76,12 +75,12 @@ extension WebViewContainerView {
 
 class MockedScriptMessage: WKScriptMessage {
     let mockedName: String
-    let mockedBody: APIRecordType
+    let mockedBody: [String: Any]
     
     override var name: String { return mockedName }
     override var body: Any { return mockedBody }
     
-    init(mockedName: String, mockedBody: APIRecordType) {
+    init(mockedName: String, mockedBody: [String: Any]) {
         self.mockedName = mockedName
         self.mockedBody = mockedBody
     }
@@ -115,7 +114,7 @@ class MockedDelegate: CheckoutMessagesHandlerDelegate {
 class MockedIFrameCommunicator: IFrameCommunicator {
     var sendCheckoutExpectation: XCTestExpectation?
 
-    func send(checkout: APZCheckout, config: APZConfig) {
+    func send(checkout: [String: Any]) {
         sendCheckoutExpectation?.fulfill()
     }
 }

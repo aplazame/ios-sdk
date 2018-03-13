@@ -24,12 +24,14 @@ typealias RequestParameters = [String: String]
 
 enum Router {
     case checkout(APZConfig)
-    case checkAvailability(Int, String)
+    case checkAvailability(APZConfig, Int, String)
     
     var baseURL: URL {
         switch self {
-        case .checkout: return URL(string: "https://checkout.aplazame.com")!
-        case .checkAvailability: return URL(string: "https://api.aplazame.com")!
+        case .checkout(let config):
+            return config.checkoutBaseUri
+        case .checkAvailability(let config, _, _):
+            return config.apiBaseUri
         }
     }
     
@@ -59,7 +61,7 @@ enum Router {
                 "sandbox": "\(config.environment.sandboxValue)",
                 "post-message": "\(true)"
             ]
-        case .checkAvailability(let amount, let currency):
+        case .checkAvailability(_, let amount, let currency):
             return [
                 "amount": "\(amount)",
                 "currency": currency,
@@ -69,7 +71,8 @@ enum Router {
     
     var method: String {
         switch self {
-        case .checkAvailability, .checkout: return "GET"
+        case .checkAvailability, .checkout:
+            return "GET"
         }
     }
 }
