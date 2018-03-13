@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     spec.name                   = "Aplazame-iOS-SDK"
     spec.authors                = "Aplazame, Inc."
-    spec.version                = "0.3.1"
+    spec.version                = "0.4.0"
     spec.summary                = "Integrate Aplazame SDK into your iOS app"
     spec.homepage               = "https://github.com/Aplazame/ios-sdk"
     spec.license                = { :type => "BSD-3-Clause", :file => "LICENSE.txt" }
