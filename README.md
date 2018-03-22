@@ -36,14 +36,23 @@ pod 'Aplazame-iOS-SDK'
 Then run `pod install` with CocoaPods 1.0 or newer.
 
 ### How to use ###
-First at all you need to create an instance of `APZPaymentContext` with the `APZConfig` object:
+First at all add the following permissions (`Privacy - Camera Usage Description` and `Privacy - Photo Library Usage Description`) to your main application `info.plist`:
+
+```xml
+<key>NSCameraUsageDescription</key>
+<string>$(PRODUCT_NAME)</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>$(PRODUCT_NAME)</string>
+```
+
+Then you need to create an instance of `APZPaymentContext` with the `APZConfig` object:
 ```swift
 let config = APZConfig(accessToken: token, environment: .sandbox)
 
 let paymentContext = APZPaymentContext(config: APZConfig(accessToken: "your-token-here", environment: .sandbox | .production))
 ```
 
-Then you can check if Aplazame is available for your order. The best way to do it is to call:
+Now you can check if Aplazame is available for your order. The best way to do it is to call:
 ```swift
 paymentContext.checkAvailability(amount: 12050, currency: "EUR") { (status) in
   switch status {
