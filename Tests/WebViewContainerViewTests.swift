@@ -114,7 +114,7 @@ class MockedDelegate: CheckoutMessagesHandlerDelegate {
 class MockedIFrameCommunicator: IFrameCommunicator {
     var sendCheckoutExpectation: XCTestExpectation?
 
-    func send(checkout: [String: Any]) {
+    func send(data: Any) {
         sendCheckoutExpectation?.fulfill()
     }
 }

@@ -55,7 +55,7 @@ class CheckoutMessagesHandler: PostMessageHandler {
     
     private func handleCheckoutEvent() {
         dPrint("APZMerchant event received")
-        iFrameCommunicator.send(checkout: checkout)
+        iFrameCommunicator.send(data: checkout)
     }
     
     private func handleStatusChange(_ rawStatus: String?) {
