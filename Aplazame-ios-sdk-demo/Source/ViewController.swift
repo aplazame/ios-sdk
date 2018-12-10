@@ -66,7 +66,7 @@ final class ViewController: UIViewController {
             "url": "http://shop.example.com/product.html",            // Article url.
             "image_url": "https://i.imgur.com/1nIay4X.jpg",           // Article image url.
             "quantity": 2,                                            // Article quantity.
-            "price": 3300,                                          // Article price (tax is not included). (4,020.00 €)
+            "price": 3300,                                          // Article price (tax is not included). (33.00 €)
             "description": "Movimiento de cuarzo de alta precisión",  // Article description.
             "tax_rate": 2100,                                         // Article tax rate. (21.00 %)
             "discount": 500,                                          // The discount amount of the article. (5.00 €)
@@ -90,7 +90,7 @@ final class ViewController: UIViewController {
             "id": String.randomID,     // Your order ID.
             "currency": "EUR",         // Currency code of the order.
             "tax_rate": 2100,          // Order tax rate. (21.00 %)
-            "total_amount": 13014,    // Order total amount. (4,620.00 €)
+            "total_amount": 13014,    // Order total amount. (130.14 €)
             "articles": articles,      // Articles in cart.
             "discount": 16000,         // The discount amount of the order. (160.00 €)
             "discount_rate": 200,      // The rate discount of the order. (2.00 %)
