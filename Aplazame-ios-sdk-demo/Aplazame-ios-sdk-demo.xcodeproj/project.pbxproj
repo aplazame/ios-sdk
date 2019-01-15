@@ -15,11 +15,6 @@
 		DD886EEB1CDE090600B076C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD886EE91CDE090600B076C6 /* Main.storyboard */; };
 		DD886EED1CDE090600B076C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD886EEC1CDE090600B076C6 /* Assets.xcassets */; };
 		DD886EF01CDE090600B076C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD886EEE1CDE090600B076C6 /* LaunchScreen.storyboard */; };
-		DDDDC26D1CECE08D00EE8814 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC26C1CECE08D00EE8814 /* OrderTableViewController.swift */; };
-		DDDDC26F1CECE35B00EE8814 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC26E1CECE35B00EE8814 /* ArticleCell.swift */; };
-		DDDDC2711CECE39000EE8814 /* QuoteDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC2701CECE39000EE8814 /* QuoteDetailCell.swift */; };
-		DDDDC2731CECE3C400EE8814 /* TotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC2721CECE3C400EE8814 /* TotalCell.swift */; };
-		DDDDC27C1CECF36D00EE8814 /* PriceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC27B1CECF36D00EE8814 /* PriceExtension.swift */; };
 		DDDDC27E1CECF38200EE8814 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC27D1CECF38200EE8814 /* ImageViewExtension.swift */; };
 		DDDDC2801CECF55700EE8814 /* AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDC27F1CECF55700EE8814 /* AppearanceExtension.swift */; };
 /* End PBXBuildFile section */
@@ -72,11 +67,6 @@
 		DD886EEC1CDE090600B076C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD886EEF1CDE090600B076C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD886EF11CDE090600B076C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DDDDC26C1CECE08D00EE8814 /* OrderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
-		DDDDC26E1CECE35B00EE8814 /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
-		DDDDC2701CECE39000EE8814 /* QuoteDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteDetailCell.swift; sourceTree = "<group>"; };
-		DDDDC2721CECE3C400EE8814 /* TotalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalCell.swift; sourceTree = "<group>"; };
-		DDDDC27B1CECF36D00EE8814 /* PriceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceExtension.swift; sourceTree = "<group>"; };
 		DDDDC27D1CECF38200EE8814 /* ImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		DDDDC27F1CECF55700EE8814 /* AppearanceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,17 +121,12 @@
 			isa = PBXGroup;
 			children = (
 				DD886EE51CDE090600B076C6 /* AppDelegate.swift */,
-				DDDDC26C1CECE08D00EE8814 /* OrderTableViewController.swift */,
 				DD886EE71CDE090600B076C6 /* ViewController.swift */,
 				8BCE20DB1CFAE4FB00E85024 /* StringExtension.swift */,
 				DD886EE91CDE090600B076C6 /* Main.storyboard */,
-				DDDDC26E1CECE35B00EE8814 /* ArticleCell.swift */,
-				DDDDC2701CECE39000EE8814 /* QuoteDetailCell.swift */,
-				DDDDC2721CECE3C400EE8814 /* TotalCell.swift */,
 				DD886EEC1CDE090600B076C6 /* Assets.xcassets */,
 				DD886EEE1CDE090600B076C6 /* LaunchScreen.storyboard */,
 				DD886EF11CDE090600B076C6 /* Info.plist */,
-				DDDDC27B1CECF36D00EE8814 /* PriceExtension.swift */,
 				DDDDC27D1CECF38200EE8814 /* ImageViewExtension.swift */,
 				DDDDC27F1CECF55700EE8814 /* AppearanceExtension.swift */,
 				8B67C8A21CFF4D2800A56D80 /* UIButtonExtension.swift */,
@@ -247,15 +232,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDDDC2711CECE39000EE8814 /* QuoteDetailCell.swift in Sources */,
 				8B67C8A31CFF4D2800A56D80 /* UIButtonExtension.swift in Sources */,
-				DDDDC26F1CECE35B00EE8814 /* ArticleCell.swift in Sources */,
 				8BCE20DC1CFAE4FB00E85024 /* StringExtension.swift in Sources */,
-				DDDDC27C1CECF36D00EE8814 /* PriceExtension.swift in Sources */,
 				DD886EE81CDE090600B076C6 /* ViewController.swift in Sources */,
 				DDDDC2801CECF55700EE8814 /* AppearanceExtension.swift in Sources */,
-				DDDDC26D1CECE08D00EE8814 /* OrderTableViewController.swift in Sources */,
-				DDDDC2731CECE3C400EE8814 /* TotalCell.swift in Sources */,
 				DDDDC27E1CECF38200EE8814 /* ImageViewExtension.swift in Sources */,
 				DD886EE61CDE090600B076C6 /* AppDelegate.swift in Sources */,
 			);

@@ -1,7 +1,7 @@
 import Foundation
 
 extension AplazameCheckoutViewController {
-    static func create(with checkout: [String: Any],
+    static func create(with checkout: String,
                        config: APZConfig,
                        delegate: APZPaymentContextDelegate,
                        onReady: @escaping OnReadyCheckout) -> AplazameCheckoutViewController {

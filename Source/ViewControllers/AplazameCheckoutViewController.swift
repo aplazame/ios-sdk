@@ -16,14 +16,14 @@ class AplazameCheckoutViewController: UIViewController {
     
     fileprivate unowned let delegate: APZPaymentContextDelegate
     fileprivate let onReady: OnReadyCheckout
-    fileprivate let checkout: [String: Any]
+    fileprivate let checkout: String
     fileprivate let config: APZConfig
     fileprivate var previusStatusBarStyle: UIStatusBarStyle!
     
     fileprivate lazy var checkoutMasegeHandler: CheckoutMessagesHandler = self.createPostMessageHandler()
     lazy var webView: WebViewContainerView = WebViewContainerView(postMessageHandlers: [self.checkoutMasegeHandler])
     
-    init(checkout: [String: Any],
+    init(checkout: String,
          config: APZConfig,
          delegate: APZPaymentContextDelegate,
          onReady: @escaping OnReadyCheckout) {
