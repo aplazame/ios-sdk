@@ -40,7 +40,7 @@ final class ViewController: UIViewController {
         guard let currency = currencyTextField.text else { return }
         checkoutButton.set(enabled: false)
         paymentContext = APZPaymentContext(config: APZConfig(accessToken: token, environment: .sandbox))
-        paymentContext?.checkAvailability(amount: Int(amount)!,
+        paymentContext?.checkAvailability(amount: Double(amount)!,
                                           currency: currency,
                                           callback: { [weak self] (status) in
             switch status {

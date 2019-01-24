@@ -49,7 +49,7 @@ public struct APZPaymentContext {
         aplazameVC.modalPresentationCapturesStatusBarAppearance = true
     }
     
-    public func checkAvailability(amount: Int,
+    public func checkAvailability(amount: Double,
                                   currency: String,
                                   callback: @escaping (AplazameAvailabilityStatus) -> Void) {
         apiManager.request(route: .checkAvailability(config, amount, currency),
