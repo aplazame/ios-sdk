@@ -56,10 +56,17 @@ enum Router {
     var params: RequestParameters {
         switch self {
         case .checkout(let config):
+            let os = ProcessInfo().operatingSystemVersion
+            let module_version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+
             return [
                 "public-key": config.accessToken,
                 "sandbox": "\(config.environment.sandboxValue)",
-                "post-message": "\(true)"
+                "post-message": "\(true)",
+                "platform-name": "ios",
+                "platform-version": String(os.majorVersion) + "." + String(os.minorVersion) + "." + String(os.patchVersion),
+                "module-name": "aplazame",
+                "module-version": module_version
             ]
         case .checkAvailability(_, let amount, let currency):
             return [
