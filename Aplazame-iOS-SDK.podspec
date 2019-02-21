@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
     spec.version                = "0.4.1"
     spec.summary                = "Integrate Aplazame SDK into your iOS app"
     spec.homepage               = "https://github.com/Aplazame/ios-sdk"
-    spec.license                = { :type => "BSD-3-Clause", :file => "LICENSE.txt" }
+    spec.license                = { :type => "BSD-3-Clause", :file => "LICENSE" }
     spec.source                 = { :git => "https://github.com/Aplazame/ios-sdk.git", :tag => spec.version }
     spec.platform               = :ios, "9.0"
     spec.ios.deployment_target  = "9.0"
