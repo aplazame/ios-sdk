@@ -14,7 +14,7 @@ class WebViewContainerViewTests: XCTestCase {
     fileprivate lazy var checkoutMessageHandler: CheckoutMessagesHandler = {
         return CheckoutMessagesHandler(delegate: delegate,
                                        iFrameCommunicator: iFrameCommunicator,
-                                       checkout: CustomCheckout.createRandomCheckout()) { }
+                                       checkout: "0123456789asdefghijklmn") { }
     }()
     
     func testMessageHandlerReceiveMerchantEvent_ShouldRequireCheckout() {
@@ -114,7 +114,7 @@ class MockedDelegate: CheckoutMessagesHandlerDelegate {
 class MockedIFrameCommunicator: IFrameCommunicator {
     var sendCheckoutExpectation: XCTestExpectation?
 
-    func send(checkout: [String: Any]) {
+    func send(data: Any) {
         sendCheckoutExpectation?.fulfill()
     }
 }

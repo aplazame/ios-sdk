@@ -9,7 +9,7 @@ class AplazameCheckoutViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        checkoutVC = AplazameCheckoutViewController.create(with: CustomCheckout.createRandomCheckout(),
+        checkoutVC = AplazameCheckoutViewController.create(with: "0123456789asdfghijklmn",
                                                            config: basicConfig,
                                                            delegate: delegate,
                                                            onReady: { _ in })

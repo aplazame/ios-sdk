@@ -24,7 +24,7 @@ typealias RequestParameters = [String: String]
 
 enum Router {
     case checkout(APZConfig)
-    case checkAvailability(APZConfig, Int, String)
+    case checkAvailability(APZConfig, Double, String)
     
     var baseURL: URL {
         switch self {
@@ -69,8 +69,9 @@ enum Router {
                 "module-version": module_version
             ]
         case .checkAvailability(_, let amount, let currency):
+            let apzAmount = Int(amount * 100)
             return [
-                "amount": "\(amount)",
+                "amount": "\(apzAmount)",
                 "currency": currency,
             ]
         }

@@ -22,7 +22,7 @@ public struct APZPaymentContext {
     }
     
     @discardableResult
-    public func requestCheckout(checkout: [String: Any],
+    public func requestCheckout(checkout: String,
                                 delegate: APZPaymentContextDelegate,
                                 onReady: @escaping (UIViewController) -> Void) -> UIViewController {
         return AplazameCheckoutViewController.create(with: checkout,
@@ -32,7 +32,7 @@ public struct APZPaymentContext {
     }
     
     public func requestCheckout(from viewController: UIViewController,
-                                checkout: [String: Any],
+                                checkout: String,
                                 delegate: APZPaymentContextDelegate,
                                 onPresent: @escaping () -> Void) {
         let aplazameVC = AplazameCheckoutViewController.create(with: checkout,
@@ -49,7 +49,7 @@ public struct APZPaymentContext {
         aplazameVC.modalPresentationCapturesStatusBarAppearance = true
     }
     
-    public func checkAvailability(amount: Int,
+    public func checkAvailability(amount: Double,
                                   currency: String,
                                   callback: @escaping (AplazameAvailabilityStatus) -> Void) {
         apiManager.request(route: .checkAvailability(config, amount, currency),
