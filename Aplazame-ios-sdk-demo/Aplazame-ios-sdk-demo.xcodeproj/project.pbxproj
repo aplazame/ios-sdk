@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C8B3DC82250102D00407AA5 /* AplazameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD447D891FD1AC2F00001B52 /* AplazameSDK.framework */; };
+		2C8B3DC92250102D00407AA5 /* AplazameSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD447D891FD1AC2F00001B52 /* AplazameSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B67C8A31CFF4D2800A56D80 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B67C8A21CFF4D2800A56D80 /* UIButtonExtension.swift */; };
 		8BCE20DC1CFAE4FB00E85024 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE20DB1CFAE4FB00E85024 /* StringExtension.swift */; };
-		DD447D8E1FD1AD7400001B52 /* AplazameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD447D891FD1AC2F00001B52 /* AplazameSDK.framework */; };
 		DD886EE61CDE090600B076C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD886EE51CDE090600B076C6 /* AppDelegate.swift */; };
 		DD886EE81CDE090600B076C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD886EE71CDE090600B076C6 /* ViewController.swift */; };
 		DD886EEB1CDE090600B076C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD886EE91CDE090600B076C6 /* Main.storyboard */; };
@@ -20,6 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2C8B3DCA2250102D00407AA5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD447D821FD1AC2F00001B52 /* Aplazame-ios-sdk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DD6601801CDBA2ED00C6E600;
+			remoteInfo = "Aplazame iOS SDK";
+		};
 		DD447D881FD1AC2F00001B52 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DD447D821FD1AC2F00001B52 /* Aplazame-ios-sdk.xcodeproj */;
@@ -50,6 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2C8B3DC92250102D00407AA5 /* AplazameSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD447D8E1FD1AD7400001B52 /* AplazameSDK.framework in Frameworks */,
+				2C8B3DC82250102D00407AA5 /* AplazameSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +159,7 @@
 			);
 			dependencies = (
 				DD447D8D1FD1AD0500001B52 /* PBXTargetDependency */,
+				2C8B3DCB2250102D00407AA5 /* PBXTargetDependency */,
 			);
 			name = "Aplazame-ios-sdk-demo";
 			productName = "Aplazame-ios-sdk-demo";
@@ -244,6 +254,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2C8B3DCB2250102D00407AA5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Aplazame iOS SDK";
+			targetProxy = 2C8B3DCA2250102D00407AA5 /* PBXContainerItemProxy */;
+		};
 		DD447D8D1FD1AD0500001B52 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Aplazame iOS SDK";
