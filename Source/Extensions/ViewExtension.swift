@@ -3,7 +3,7 @@ import UIKit
 extension UIView {
     func addConstraintsToFillInSuperview() {
         guard let superview = superview else { return }
-        let noLayoutFormatOptions = NSLayoutFormatOptions(rawValue: 0)
+        let noLayoutFormatOptions = NSLayoutConstraint.FormatOptions(rawValue: 0)
         translatesAutoresizingMaskIntoConstraints = false
         superview.addConstraints(
             NSLayoutConstraint.constraints(

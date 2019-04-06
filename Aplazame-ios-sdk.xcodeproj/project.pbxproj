@@ -279,7 +279,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Aplazame;
 				TargetAttributes = {
 					8B9CAB2D1CF8925D00427AB8 = {
@@ -287,7 +287,7 @@
 					};
 					DD6601801CDBA2ED00C6E600 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1020;
 					};
 					DD66018A1CDBA2ED00C6E600 = {
 						CreatedOnToolsVersion = 7.3;
@@ -297,10 +297,11 @@
 			};
 			buildConfigurationList = DD66017B1CDBA2ED00C6E600 /* Build configuration list for PBXProject "Aplazame-ios-sdk" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = DD6601771CDBA2ED00C6E600;
 			productRefGroup = DD6601821CDBA2ED00C6E600 /* Products */;
@@ -410,6 +411,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -469,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -534,7 +537,7 @@
 				PRODUCT_NAME = AplazameSDK;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -553,7 +556,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aplazame.ios-sdk";
 				PRODUCT_NAME = AplazameSDK;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
