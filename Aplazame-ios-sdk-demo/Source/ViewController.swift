@@ -27,7 +27,6 @@ final class ViewController: UIViewController {
             checkout: checkout_id,
             delegate: self,
             onReady: { vc in
-                self.loadingView.isHidden = true
                 vc.title = "Aplazame"
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -63,6 +62,11 @@ final class ViewController: UIViewController {
         navigationController?.applyStyle()
         
         AplazameSDK.debugMode = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadingView.isHidden = true
     }
 }
 

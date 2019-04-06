@@ -18,7 +18,6 @@ class AplazameCheckoutViewController: UIViewController {
     fileprivate let onReady: OnReadyCheckout
     fileprivate let checkout: String
     fileprivate let config: APZConfig
-    fileprivate var previusStatusBarStyle: UIStatusBarStyle!
     
     fileprivate lazy var checkoutMasegeHandler: CheckoutMessagesHandler = self.createPostMessageHandler()
     lazy var webView: WebViewContainerView = WebViewContainerView(postMessageHandlers: [self.checkoutMasegeHandler])
@@ -34,7 +33,7 @@ class AplazameCheckoutViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        makeItTransparent()
+        loadWebView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -43,10 +42,7 @@ class AplazameCheckoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addWebView()
-        
-        loadWebView()
     }
 
     fileprivate func addWebView() {
@@ -71,24 +67,6 @@ class AplazameCheckoutViewController: UIViewController {
                                        checkout: checkout) { [unowned self] in
             self.dismiss(animated: true, completion: nil)
         }
-    }
-    
-    fileprivate func makeItTransparent() {
-        view.backgroundColor = .clear
-        webView.makeItTransparent()
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        previusStatusBarStyle = UIApplication.shared.statusBarStyle
-        UIApplication.shared.statusBarStyle = preferredStatusBarStyle
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = previusStatusBarStyle
     }
 }
 
