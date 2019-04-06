@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gax-jv-GS0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gax-jv-GS0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -157,38 +157,42 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nrt-8P-pw5" userLabel="loadingView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nrt-8P-pw5" userLabel="loadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cO1-co-X0U">
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cO1-co-X0U">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="LaT-6k-NNi">
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LaT-6k-NNi">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <blurEffect style="extraLight"/>
                                     </visualEffectView>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Vwh-3n-x9G">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Vwh-3n-x9G">
                                         <rect key="frame" x="169" y="315" width="37" height="37"/>
                                         <color key="color" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="cO1-co-X0U" secondAttribute="bottom" id="69w-Rg-xuj"/>
+                                    <constraint firstAttribute="bottom" secondItem="cO1-co-X0U" secondAttribute="bottom" id="E0j-gE-Jxi"/>
+                                    <constraint firstItem="cO1-co-X0U" firstAttribute="top" secondItem="Nrt-8P-pw5" secondAttribute="top" id="F8x-Y6-dpw"/>
                                     <constraint firstItem="Vwh-3n-x9G" firstAttribute="centerX" secondItem="Nrt-8P-pw5" secondAttribute="centerX" id="FUZ-yp-HVB"/>
-                                    <constraint firstItem="cO1-co-X0U" firstAttribute="leading" secondItem="Nrt-8P-pw5" secondAttribute="leading" id="Rc8-QP-nYw"/>
-                                    <constraint firstItem="cO1-co-X0U" firstAttribute="top" secondItem="Nrt-8P-pw5" secondAttribute="top" id="SMg-ji-PtV"/>
+                                    <constraint firstAttribute="trailing" secondItem="cO1-co-X0U" secondAttribute="trailing" id="GbB-Cd-Gpl"/>
+                                    <constraint firstItem="cO1-co-X0U" firstAttribute="leading" secondItem="Nrt-8P-pw5" secondAttribute="leading" id="PGC-JC-XDE"/>
                                     <constraint firstItem="Vwh-3n-x9G" firstAttribute="centerY" secondItem="Nrt-8P-pw5" secondAttribute="centerY" id="TXt-Uj-yCY"/>
-                                    <constraint firstAttribute="trailing" secondItem="cO1-co-X0U" secondAttribute="trailing" id="g0q-GE-5id"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6gm-Hp-fPX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6H2-73-Bn2"/>
+                            <constraint firstAttribute="trailing" secondItem="Nrt-8P-pw5" secondAttribute="trailing" id="IxY-fk-Ccy"/>
+                            <constraint firstItem="Nrt-8P-pw5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Piv-U8-nRr"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6gm-Hp-fPX" secondAttribute="bottom" id="Q5g-fi-nIN"/>
+                            <constraint firstItem="Nrt-8P-pw5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cCR-uG-aGJ"/>
                             <constraint firstAttribute="trailing" secondItem="6gm-Hp-fPX" secondAttribute="trailing" id="gba-ed-hSu"/>
+                            <constraint firstAttribute="bottom" secondItem="Nrt-8P-pw5" secondAttribute="bottom" id="lIJ-Ps-X7V"/>
                             <constraint firstItem="6gm-Hp-fPX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mWV-cp-Bbi"/>
                         </constraints>
                     </view>
