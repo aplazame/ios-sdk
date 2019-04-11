@@ -2,7 +2,7 @@ import WebKit
 
 final class WebViewContainerView: WKWebView {
     fileprivate let postMessageHandlers: [PostMessageHandler]
- 
+    
     init(postMessageHandlers: [PostMessageHandler]) {
         self.postMessageHandlers = postMessageHandlers
         
@@ -25,8 +25,10 @@ final class WebViewContainerView: WKWebView {
 
 extension WebViewContainerView: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        postMessageHandlers.filter { $0.callbackName == message.name }.forEach { (postMessageHandler) in
-            postMessageHandler.handle(receivedMessage: message)
+        postMessageHandlers
+            .filter { $0.callbackName == message.name }
+            .forEach { postMessageHandler in
+                postMessageHandler.handle(receivedMessage: message)
         }
     }
 }

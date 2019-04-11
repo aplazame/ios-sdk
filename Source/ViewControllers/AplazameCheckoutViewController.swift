@@ -33,6 +33,8 @@ class AplazameCheckoutViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
+        addWebViewFake()
+
         loadWebView()
     }
 
@@ -47,6 +49,12 @@ class AplazameCheckoutViewController: UIViewController {
 
     fileprivate func addWebView() {
         add(webView: webView)
+    }
+    
+    fileprivate func addWebViewFake() {
+        webView.frame = CGRect(origin: .zero, size: .zero)
+        let currentWindow = UIApplication.shared.delegate?.window
+        currentWindow??.rootViewController?.view.addSubview(webView)
     }
 
     fileprivate func add(webView webViewToAdd: WKWebView) {
@@ -72,6 +80,7 @@ class AplazameCheckoutViewController: UIViewController {
 
 extension AplazameCheckoutViewController: CheckoutMessagesHandlerDelegate {
     func checkoutReady() {
+        addWebView()
         onReady(self)
     }
     
