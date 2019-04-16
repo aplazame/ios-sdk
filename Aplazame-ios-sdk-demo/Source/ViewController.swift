@@ -5,6 +5,7 @@ final class ViewController: UIViewController {
 
     fileprivate var paymentContext: APZPaymentContext?
     
+    @IBOutlet weak var bottomButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var loadingView: UIView! {
         didSet {
             loadingView.isHidden = true
@@ -62,24 +63,45 @@ final class ViewController: UIViewController {
         navigationController?.applyStyle()
         
         AplazameSDK.debugMode = true
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadingView.isHidden = true
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        bottomButtonConstraint.constant = keyboardSize.height + 8
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        bottomButtonConstraint.constant = 8
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 extension ViewController: APZPaymentContextDelegate {
     func checkoutDidClose(checkoutVC: UIViewController, with reason: APZCheckoutCloseReason) {
-        self.presentAlert(title: "checkoutDidClose",
-                           message: reason.rawValue)
-        checkoutVC.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+        presentAlert(title: "checkoutDidClose",
+                     message: reason.rawValue)
     }
     
     func checkoutStatusChanged(with status: APZCheckoutStatus) {
-        self.presentAlert(title: "checkoutStatusChanged",
-                          message: status.rawValue)
+        presentAlert(title: "checkoutStatusChanged",
+                     message: status.rawValue)
     }
 }
 
